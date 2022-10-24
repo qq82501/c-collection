@@ -14,7 +14,7 @@ function ProductItem(props) {
     >
       <div className={styles.product_item__img_box}>
         <img
-          alt="product picture"
+          alt="product"
           className={styles.product_item__img}
           onMouseEnter={imageChangeHandler}
           onMouseLeave={imageChangeHandler}
