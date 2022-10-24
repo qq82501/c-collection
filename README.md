@@ -2,11 +2,12 @@
 
 a jewelry e-commerce website for side-project.
 
-## functionality:
+## Functionality:
 
 1. Carousel (Slider) in welcome page.
-2. Rendering products list by category.
-3. Rendering product detail. (Building...)
+2. Breadcrumb
+3. Rendering products list by category.
+4. Rendering product detail. (Building...)
 
 ## Tools:
 
