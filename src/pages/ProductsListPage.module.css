@@ -1,0 +1,14 @@
+.product_list__container {
+  position: relative;
+}
+
+.products_list__grid {
+  width: 120rem;
+  margin: 8rem auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 30rem);
+  column-gap: 5rem;
+  row-gap: 8rem;
+  z-index: -50;
+}

@@ -1,0 +1,30 @@
+.sliders_container {
+  max-width: 120rem;
+  height: 40rem;
+  /* padding: 0 2rem 0 2rem; */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider_box {
+  transition: all 1.5s;
+  display: flex;
+}
+
+.slider_selectors_box {
+  position: absolute;
+  display: flex;
+  gap: 0.5rem;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.slider_selector {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #5b5b5b;
+}

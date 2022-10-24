@@ -1,0 +1,35 @@
+.ads__box {
+  width: 100vw;
+  height: 80rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60fr 40fr;
+  padding: 0 4rem;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.ads__box .ad_link:nth-child(3) {
+  grid-column: 1/-1;
+}
+
+.col-2-ad {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad_link:link,
+.ad_link:visited {
+  width: 100%;
+  height: 100%;
+  font-weight: 300;
+  font-size: 3.6rem;
+  color: #fff;
+  text-decoration: none;
+}

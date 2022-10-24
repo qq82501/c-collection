@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Layout from "./components/layout/Layout";
+import WelcomePage from "./pages/WelcomePage";
+import ProductsListPage from "./pages/ProductsListPage";
+import { getProductsData, getProductDetail } from "./helper/helper";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import Page2 from "./pages/Page2";
+
+const categories = [
+  {
+    title: "耳環",
+    to: "/product/earrings",
+    childCat: [
+      { title: "夾式耳環", to: "/product/earrings/cuff" },
+      { title: "穿孔式耳環", to: "/product/earrings/piercing" },
+    ],
+  },
+  { title: "戒指", to: "/product/rings", childCat: [] },
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <WelcomePage /> },
+        {
+          path: "product/:category",
+          element: <ProductsListPage />,
+          loader: ({ params }) => {
+            return getProductsData(params.category);
+          },
+        },
+        {
+          path: "product/:category/:childCategory",
+          element: <ProductsListPage />,
+          loader: ({ params }) => {
+            return getProductsData(params.childCategory);
+          },
+        },
+        {
+          path: "productDetail/:productNo",
+          element: <ProductDetailPage />,
+          loader: ({ params }) => {
+            return getProductDetail(params.productNo);
+          },
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
