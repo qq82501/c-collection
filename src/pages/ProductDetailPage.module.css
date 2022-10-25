@@ -1,0 +1,7 @@
+.product_detail__main_container {
+  max-width: 80%;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 50fr 50fr;
+  column-gap: 8rem;
+}

@@ -1,0 +1,97 @@
+.product_info__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  /* align-self: center; */
+}
+
+.product_info__text_box {
+  font-size: 3.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  row-gap: 3rem;
+}
+
+.product_info__text_box .product_info_title {
+  grid-column: 1/-1;
+}
+
+.product_info__text_box .product_info_price {
+  align-self: start;
+  justify-self: right;
+}
+.product_info__text_box .product_info__favorite {
+  align-self: start;
+  justify-self: left;
+}
+
+.product_info_price {
+  font-size: 2.6rem;
+  font-weight: 500;
+}
+
+.btn__purchase {
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.8rem 0;
+}
+
+.form__purchase {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.form__purchase label,
+.form__purchase select {
+  font-size: 2.4rem;
+}
+
+.form__purchase label {
+  margin-right: 2rem;
+}
+
+.purchase__form_box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.spec_radio__box {
+  display: inline-flex;
+  gap: 1rem;
+}
+.spec_radio__label {
+  background-color: #dfdfdf;
+  border: 1px solid rgb(176, 176, 176);
+  display: inline-block;
+  width: 4rem;
+  text-align: center;
+  font-weight: 300;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0 !important;
+  cursor: pointer;
+}
+.spec_radio__label:hover {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.spec_radio {
+  display: none;
+}
+
+.btn__purchase {
+  background-color: black;
+  color: #fff;
+  font-size: 2.6rem;
+  font-weight: 700;
+  gap: 1rem;
+}
+
+.btn__purchase ion-icon {
+  font-size: 4rem;
+}

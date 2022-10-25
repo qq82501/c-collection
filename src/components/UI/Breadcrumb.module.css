@@ -11,3 +11,9 @@
   position: fixed;
   z-index: 50;
 }
+
+.last_path {
+  cursor: default;
+  text-decoration: underline;
+  font-weight: 300;
+}

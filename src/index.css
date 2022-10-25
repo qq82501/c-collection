@@ -29,8 +29,29 @@ code {
   padding-top: 6rem;
 }
 
+.breadcrumb__height {
+  padding-top: 4rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .center {
   margin: 0 auto;
+}
+
+.favorite {
+  font-size: 3.6rem;
+  color: rgb(48, 48, 48);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.favorite ion-icon:hover {
+  color: red;
 }
 
 .link:link,

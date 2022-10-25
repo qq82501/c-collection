@@ -1,0 +1,36 @@
+.image_viewer__container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 15fr 85fr;
+  column-gap: 1rem;
+}
+.previewer_box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+.previewer_item {
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  box-sizing: content-box;
+  padding: 0.2rem;
+  border: 2px solid transparent;
+}
+
+.previewer_img {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+.viewer_box {
+  height: 100%;
+}
+.viewer_img {
+  width: 100%;
+}
+.active {
+  border: 2px solid black;
+}

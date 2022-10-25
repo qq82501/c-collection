@@ -22,7 +22,7 @@ function ProductItem(props) {
             isImageChange ? "02" : "01"
           }.jpg`)}
         />
-        <button className={styles.favorite}>
+        <button className={`favorite ${styles.product_item__favorite}`}>
           <ion-icon name="heart"></ion-icon>
         </button>
       </div>

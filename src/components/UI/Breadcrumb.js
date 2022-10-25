@@ -1,19 +1,36 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "./Breadcrumb.module.css";
 
 function Breadcrumb(props) {
-  const location = useLocation();
-  console.log(location);
   const { categoryPath } = props;
 
   const breadContent = categoryPath
     .map((cate, i) => {
-      return (
-        <Link key={i} className="link" to={`/product/${cate}`}>
-          {cate}
-        </Link>
-      );
+      if (i === categoryPath.length - 1) {
+        return (
+          <span className={styles.last_path} key={i}>
+            {cate}
+          </span>
+        );
+      }
+      if (i === 0) {
+        return (
+          <Link key={i} className="link" to={`/product/${cate}`}>
+            {cate}
+          </Link>
+        );
+      } else {
+        return (
+          <Link
+            key={i}
+            className="link"
+            to={`/product/${categoryPath[0]}/${cate}`}
+          >
+            {cate}
+          </Link>
+        );
+      }
     })
     .reduce((acc, cate, i) => {
       acc.push(cate);
