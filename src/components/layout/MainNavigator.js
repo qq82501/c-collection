@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import styles from "./MainNavigator.module.css";
@@ -7,6 +8,7 @@ import Category from "../products/Category";
 
 function MainNavigator() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const favItems = useSelector((state) => state.localFavorite);
 
   const openCategoryHandler = function () {
     setIsCategoryOpen(true);
@@ -35,10 +37,19 @@ function MainNavigator() {
                 <ion-icon name="search-outline"></ion-icon>
               </NavButton>
             </li>
-            <li>
-              <NavButton>
-                <ion-icon name="heart-outline"></ion-icon>
-              </NavButton>
+            <li className={styles.nav_icon__fav}>
+              <Link to="/myWishList">
+                <NavButton>
+                  <ion-icon name="heart-outline"></ion-icon>
+                </NavButton>
+                {favItems.length ? (
+                  <div className={styles.fav_quantity}>
+                    <span>{favItems.length}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </Link>
             </li>
             <li>
               <NavButton>

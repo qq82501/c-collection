@@ -44,3 +44,25 @@
 .nav-icons ion-icon {
   padding: 0 0.7rem;
 }
+
+.nav_icon__fav {
+  position: relative;
+}
+
+.fav_quantity {
+  background-color: red;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  font-size: 2px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.8);
+}

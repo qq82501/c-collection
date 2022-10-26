@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styles from "./ProductItem.module.css";
+import styles from "./FavItem.module.css";
 import useFavorite from "../../hook/useFavorite";
+import SpecSelector from "./SpecSelector";
 
-function ProductItem(props) {
-  const favItems = useSelector((state) => state.localFavorite);
+function FavItem(props) {
   const { productNo } = props.product;
   const updateFav = useFavorite(props.product);
+  const spec = props.product.spec || [];
 
   const [isImageChange, setIsImageChange] = useState(false);
   const imageChangeHandler = function () {
@@ -18,9 +18,13 @@ function ProductItem(props) {
     updateFav();
   };
 
+  const addToCartHandler = function () {
+    console.log("ADD TO CART");
+  };
+
   return (
     <>
-      <div className={styles.product_item__container}>
+      <div className={`${styles.product_item__container} ${props.className}`}>
         <div className={styles.product_item__img_box}>
           <Link to={`/productDetail/${productNo}`} className="link">
             <img
@@ -34,6 +38,12 @@ function ProductItem(props) {
             />
           </Link>
           <button
+            className={`favorite ${styles.fav_item__close} `}
+            onClick={updateFavHandler}
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+          {/* <button
             onClick={updateFavHandler}
             className={`favorite ${styles.product_item__favorite} ${
               favItems.some((item) => item.productNo === productNo) &&
@@ -41,16 +51,21 @@ function ProductItem(props) {
             }`}
           >
             <ion-icon name="heart"></ion-icon>
-          </button>
+          </button> */}
         </div>
         <div className={styles.product_item__info}>
           <p>{props.product.title}</p>
           <p
             className={styles.product_item__info_price}
           >{`${props.product.price} TWD`}</p>
+          <SpecSelector
+            product={props.product}
+            onClick={spec.length ? props.onClick : addToCartHandler}
+            onAddToCart={addToCartHandler}
+          />
         </div>
       </div>
     </>
   );
 }
-export default ProductItem;
+export default FavItem;

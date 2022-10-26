@@ -1,0 +1,14 @@
+.btn__add_cart {
+  background-color: black;
+  color: #fff;
+  font-weight: 700;
+  gap: 1rem;
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+
+.btn__add_cart ion-icon {
+  font-size: 4rem;
+}

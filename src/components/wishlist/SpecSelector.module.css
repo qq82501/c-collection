@@ -1,0 +1,39 @@
+.spec_selector__container {
+  position: relative;
+}
+.spec_selector__btn_add_cart {
+  font-size: 1.6rem;
+}
+
+.spec_selector__btn_add_cart ion-icon {
+  font-size: 2rem;
+}
+
+.spec_selector__label_box {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  gap: 1px;
+  background-color: #868686;
+  width: 90%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+}
+
+.spec_selector__label {
+  background-color: #cdcdcd;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.spec_selector__radio {
+  display: none;
+}
+
+:global(.open-spec) .spec_selector__label_box {
+  opacity: 1;
+}

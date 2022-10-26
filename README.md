@@ -6,8 +6,9 @@ a jewelry e-commerce website for side-project.
 
 1. Carousel (Slider) in welcome page.
 2. Breadcrumb
-3. Rendering products list by category.
-4. Rendering product detail. (Building...)
+3. Products list page rendered by product category.
+4. Product detail page. (Custom radio box)
+5. My wish list page
 
 ## Tools:
 
@@ -15,3 +16,4 @@ a jewelry e-commerce website for side-project.
 2. CSS
 3. React.js
 4. React-router-dom v6.4.2^
+5. Firebase

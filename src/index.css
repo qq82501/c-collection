@@ -54,6 +54,10 @@ code {
   color: red;
 }
 
+.fav__active {
+  color: red;
+}
+
 .link:link,
 .link:visited {
   text-decoration: none;

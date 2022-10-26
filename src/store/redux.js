@@ -1,17 +1,39 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedCategory: "",
-  categoryPath: "",
+  localFavorite: [],
 };
 
 const reducer = function (state = initialState, action) {
   switch (action.type) {
-    case "SET_CATEGORY":
+    case "INITIAL_FAV_DATA": {
+      return { ...state, localFavorite: action.payload };
+    }
+    case "ADD_FAV":
+      localStorage.setItem(
+        "localFav",
+        JSON.stringify([...state.localFavorite, action.payload])
+      );
       return {
-        selectedCategory: action.payload.selected,
-        categoryPath: action.payload.categoryPath,
+        ...state,
+        localFavorite: [...state.localFavorite, action.payload],
       };
+    case "REMOVE_FAV":
+      localStorage.setItem(
+        "localFav",
+        JSON.stringify(
+          state.localFavorite.filter(
+            (item) => item.productNo !== action.payload.productNo
+          )
+        )
+      );
+      return {
+        ...state,
+        localFavorite: state.localFavorite.filter(
+          (item) => item.productNo !== action.payload.productNo
+        ),
+      };
+
     default:
       return state;
   }

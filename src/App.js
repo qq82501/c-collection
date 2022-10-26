@@ -1,25 +1,27 @@
 import "./App.css";
+import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Layout from "./components/layout/Layout";
 import WelcomePage from "./pages/WelcomePage";
 import ProductsListPage from "./pages/ProductsListPage";
 import { getProductsData, getProductDetail } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import Page2 from "./pages/Page2";
-
-// const categories = [
-//   {
-//     title: "耳環",
-//     to: "/product/earrings",
-//     childCat: [
-//       { title: "夾式耳環", to: "/product/earrings/cuff" },
-//       { title: "穿孔式耳環", to: "/product/earrings/piercing" },
-//     ],
-//   },
-//   { title: "戒指", to: "/product/rings", childCat: [] },
-// ];
+import MyWishList from "./pages/MyWishList";
 
 function App() {
+  console.log(JSON.parse(localStorage.getItem("localFav")));
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getLocalFav = function () {
+      const localFavItems = JSON.parse(localStorage.getItem("localFav") || []);
+      dispatch({ type: "INITIAL_FAV_DATA", payload: localFavItems });
+    };
+    getLocalFav();
+  }, [dispatch]);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -46,6 +48,10 @@ function App() {
           loader: ({ params }) => {
             return getProductDetail(params.productNo);
           },
+        },
+        {
+          path: "myWishList",
+          element: <MyWishList />,
         },
       ],
     },
