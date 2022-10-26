@@ -12,11 +12,10 @@ import MyWishList from "./pages/MyWishList";
 
 function App() {
   console.log(JSON.parse(localStorage.getItem("localFav")));
-
   const dispatch = useDispatch();
   useEffect(() => {
     const getLocalFav = function () {
-      const localFavItems = JSON.parse(localStorage.getItem("localFav") || []);
+      const localFavItems = JSON.parse(localStorage.getItem("localFav")) || [];
       dispatch({ type: "INITIAL_FAV_DATA", payload: localFavItems });
     };
     getLocalFav();
