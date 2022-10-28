@@ -68,7 +68,8 @@
   margin-right: 0 !important;
   cursor: pointer;
 }
-.spec_radio__label:hover {
+.spec_radio__label:hover,
+.spec_selected {
   background-color: #000;
   color: #fff;
   border: 1px solid #000;
@@ -91,4 +92,23 @@
 
 .btn__purchase ion-icon {
   font-size: 4rem;
+}
+
+.invalid {
+  border: 2px red solid;
+  box-sizing: content-box;
+  padding: 1.2rem 0.5rem;
+  position: relative;
+}
+
+.error_message {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  background-color: #fff;
+  color: red;
+  font-weight: 500;
+  font-size: 1.6rem;
+  transform: translateY(-65%);
+  padding: 0 1rem;
 }

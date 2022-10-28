@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./MyWishList.module.css";
+import styles from "./MyWishListPage.module.css";
 import FavItem from "../components/wishlist/FavItem";
 
-function MyWishList() {
+function MyWishListPage() {
   const favItems = useSelector((state) => state.localFavorite);
   const [clickedProduct, setClickedProduct] = useState("");
 
@@ -21,6 +21,7 @@ function MyWishList() {
       />
     );
   });
+
   return (
     <div className="nav-bar__height">
       <div className={styles.wish_list__title_bar}>您喜愛的商品</div>
@@ -33,4 +34,4 @@ function MyWishList() {
   );
 }
 
-export default MyWishList;
+export default MyWishListPage;

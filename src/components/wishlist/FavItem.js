@@ -3,23 +3,22 @@ import { Link } from "react-router-dom";
 import styles from "./FavItem.module.css";
 import useFavorite from "../../hook/useFavorite";
 import SpecSelector from "./SpecSelector";
+import useAddCart from "../../hook/useAddCart";
 
 function FavItem(props) {
-  const { productNo } = props.product;
+  const { addToCartHandler } = useAddCart(props.product);
   const updateFav = useFavorite(props.product);
+  const [isImageChange, setIsImageChange] = useState(false);
+
+  const { productNo } = props.product;
   const spec = props.product.spec || [];
 
-  const [isImageChange, setIsImageChange] = useState(false);
   const imageChangeHandler = function () {
     setIsImageChange((prevState) => !prevState);
   };
 
   const updateFavHandler = function () {
     updateFav();
-  };
-
-  const addToCartHandler = function () {
-    console.log("ADD TO CART");
   };
 
   return (
@@ -38,7 +37,7 @@ function FavItem(props) {
             />
           </Link>
           <button
-            className={`favorite ${styles.fav_item__close} `}
+            className={`btn__close ${styles.fav_item__close} `}
             onClick={updateFavHandler}
           >
             <ion-icon name="close-outline"></ion-icon>

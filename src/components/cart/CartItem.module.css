@@ -1,0 +1,21 @@
+.cart_item__container {
+  display: grid;
+  grid-template-columns: auto 60fr 40fr;
+  grid-template-rows: 12rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+  box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.07);
+}
+
+.cart_item__container input {
+  font-size: 1.6rem;
+}
+
+.cart_item__img {
+  height: 100%;
+}
+.cart_item__container .cart_item__price_box {
+  align-self: flex-end;
+  justify-self: right;
+  padding-right: 2rem;
+}

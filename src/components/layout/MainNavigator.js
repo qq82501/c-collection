@@ -9,6 +9,7 @@ import Category from "../products/Category";
 function MainNavigator() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const favItems = useSelector((state) => state.localFavorite);
+  const cartItems = useSelector((state) => state.localCart);
 
   const openCategoryHandler = function () {
     setIsCategoryOpen(true);
@@ -43,7 +44,7 @@ function MainNavigator() {
                   <ion-icon name="heart-outline"></ion-icon>
                 </NavButton>
                 {favItems.length ? (
-                  <div className={styles.fav_quantity}>
+                  <div className={styles.icon_quantity}>
                     <span>{favItems.length}</span>
                   </div>
                 ) : (
@@ -51,10 +52,19 @@ function MainNavigator() {
                 )}
               </Link>
             </li>
-            <li>
-              <NavButton>
-                <ion-icon name="cart-outline"></ion-icon>
-              </NavButton>
+            <li className={styles.nav_icon__cart}>
+              <Link to="/myCart">
+                <NavButton>
+                  <ion-icon name="cart-outline"></ion-icon>
+                </NavButton>
+              </Link>
+              {cartItems.length ? (
+                <div className={styles.icon_quantity}>
+                  <span>{cartItems.length}</span>
+                </div>
+              ) : (
+                ""
+              )}
             </li>
             <li>
               <NavButton>

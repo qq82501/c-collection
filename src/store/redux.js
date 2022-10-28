@@ -2,12 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
   localFavorite: [],
+  localCart: [],
 };
 
 const reducer = function (state = initialState, action) {
   switch (action.type) {
-    case "INITIAL_FAV_DATA": {
-      return { ...state, localFavorite: action.payload };
+    case "INITIAL_LOCAL_DATA": {
+      return {
+        localFavorite: action.payload.fav,
+        localCart: action.payload.cart,
+      };
     }
     case "ADD_FAV":
       localStorage.setItem(
@@ -32,6 +36,16 @@ const reducer = function (state = initialState, action) {
         localFavorite: state.localFavorite.filter(
           (item) => item.productNo !== action.payload.productNo
         ),
+      };
+
+    case "ADD_CART":
+      localStorage.setItem(
+        "localCart",
+        JSON.stringify([...state.localCart, action.payload])
+      );
+      return {
+        ...state,
+        localCart: [...state.localCart, action.payload],
       };
 
     default:

@@ -1,0 +1,8 @@
+.input__container {
+  position: relative;
+}
+.postfix {
+  position: absolute;
+  top: 0;
+  right: -10%;
+}

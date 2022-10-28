@@ -54,6 +54,13 @@ code {
   color: red;
 }
 
+.btn__close {
+  font-size: 3.6rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .fav__active {
   color: red;
 }
@@ -62,4 +69,15 @@ code {
 .link:visited {
   text-decoration: none;
   color: #000;
+}
+
+input[readOnly] {
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  /* width: auto; */
+}
+
+input[readOnly]:focus {
+  outline: none;
 }

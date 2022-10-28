@@ -50,3 +50,19 @@ export const getProductDetail = async function (productNo) {
   const product = data.find((product) => product.productNo === productNo);
   return product;
 };
+
+export const addToCart = async function (para) {
+  const formData = await para.request.formData();
+  const product = {
+    productNo: formData.get("productNo"),
+    title: formData.get("title"),
+    spec: formData.get("spec"),
+    price: formData.get("price"),
+    img: formData.get("img"),
+  };
+  console.log(product);
+
+  // const res = await fetch(
+  //   "https://c-collection-default-rtdb.firebaseio.com/products.json"
+  // );
+};
