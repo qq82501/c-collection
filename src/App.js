@@ -7,7 +7,6 @@ import WelcomePage from "./pages/WelcomePage";
 import ProductsListPage from "./pages/ProductsListPage";
 import { getProductsData, getProductDetail, addToCart } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import MyCart from "./pages/MyCartPage";
 // import Page2 from "./pages/Page2";
 import MyWishListPage from "./pages/MyWishListPage";
 import MyCartPage from "./pages/MyCartPage";

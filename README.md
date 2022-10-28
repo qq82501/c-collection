@@ -7,8 +7,9 @@ a jewelry e-commerce website for side-project.
 1. Carousel (Slider) in welcome page.
 2. Breadcrumb
 3. Products list page rendered by product category.
-4. Product detail page. (Custom radio box)
+4. Product detail page (Custom radio box)
 5. My wish list page
+6. Add to Cart (contains validation)
 
 ## Tools:
 

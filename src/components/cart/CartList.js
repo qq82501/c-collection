@@ -1,4 +1,4 @@
-import styles from "./CartList.module.css";
+// import styles from "./CartList.module.css";
 import CartItem from "./CartItem";
 
 function CartList() {
