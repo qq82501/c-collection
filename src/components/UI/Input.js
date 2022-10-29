@@ -10,15 +10,23 @@ function Input(props) {
         readOnly={props.readOnly}
         value={props.value}
         size={
-          props.value.length > 10 ? props.value.length * 2 : props.value.length
+          props.value.length > 9 ? props.value.length * 1.5 : props.value.length
         }
       />
     );
   }
 
   if (props.selection) {
-    const options = props.selection.map((item) => <option>{item}</option>);
-    input = <select>{options}</select>;
+    const options = props.selection.map((item) => (
+      <option key={item} value={item}>
+        {item}
+      </option>
+    ));
+    input = (
+      <select onChange={props.onChange} defaultValue={props.value}>
+        {options}
+      </select>
+    );
   }
 
   return (

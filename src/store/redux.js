@@ -39,13 +39,23 @@ const reducer = function (state = initialState, action) {
       };
 
     case "ADD_CART":
-      localStorage.setItem(
-        "localCart",
-        JSON.stringify([...state.localCart, action.payload])
+      const existedIndex = state.localCart.findIndex(
+        (item) => item.productNo === action.payload.productNo
       );
+      let newCartItems;
+      if (existedIndex > -1) {
+        let existedItem = Object.assign({}, state.localCart[existedIndex]);
+        existedItem.quantity += action.payload.quantity;
+        newCartItems = [...state.localCart];
+        newCartItems[existedIndex] = existedItem;
+      }
+      if (existedIndex < 0) {
+        newCartItems = [...state.localCart, action.payload];
+      }
+      localStorage.setItem("localCart", JSON.stringify(newCartItems));
       return {
         ...state,
-        localCart: [...state.localCart, action.payload],
+        localCart: newCartItems,
       };
 
     default:

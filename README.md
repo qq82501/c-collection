@@ -9,7 +9,7 @@ a jewelry e-commerce website for side-project.
 3. Products list page rendered by product category.
 4. Product detail page (Custom radio box)
 5. My wish list page
-6. Add to Cart (contains validation)
+6. Add to Cart (validation)
 
 ## Tools:
 

@@ -9,20 +9,28 @@ function useAddCart(productItem) {
     setError(error);
   };
 
-  const addToCartHandler = function (_, spec = null, quantity) {
-    console.log(_, spec, quantity);
+  const addToCartHandler = function (_, spec = null, quantity, e) {
+    const isAddFromCart = productItem.hasOwnProperty("imgPath");
+    const cartUpdatedQuantity = +e.target.value - quantity;
+    console.log(cartUpdatedQuantity);
+    // if (isAddFromCart && e.target.value < quantity) return;
+
     if (productItem.spec?.length > 0 && !spec) {
       return setError("請選擇規格");
     }
 
     setError(null);
     const product = {
-      productNo: `${productItem.productNo}${spec ? `-${spec}` : ""}`,
+      productNo: isAddFromCart
+        ? `${productItem.productNo}`
+        : `${productItem.productNo}${spec ? `-${spec}` : ""}`,
       title: productItem.title,
       price: productItem.price,
-      imgPath: `${productItem.productNo}/${productItem.imgs[0]}`,
+      imgPath: isAddFromCart
+        ? productItem.imgPath
+        : `${productItem.productNo}/${productItem.imgs[0]}`,
       spec: spec,
-      quantity,
+      quantity: isAddFromCart ? cartUpdatedQuantity : quantity,
     };
 
     console.log("ADD TO CART", product);

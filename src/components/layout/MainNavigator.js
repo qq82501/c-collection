@@ -10,6 +10,9 @@ function MainNavigator() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const favItems = useSelector((state) => state.localFavorite);
   const cartItems = useSelector((state) => state.localCart);
+  const cartQuantity = cartItems.reduce((acc, item) => {
+    return (acc += item.quantity);
+  }, 0);
 
   const openCategoryHandler = function () {
     setIsCategoryOpen(true);
@@ -60,7 +63,7 @@ function MainNavigator() {
               </Link>
               {cartItems.length ? (
                 <div className={styles.icon_quantity}>
-                  <span>{cartItems.length}</span>
+                  <span>{cartQuantity}</span>
                 </div>
               ) : (
                 ""
