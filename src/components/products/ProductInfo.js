@@ -94,7 +94,12 @@ function ProductInfo(props) {
           </div>
         </div>
         <BtnAddCart
-          onClick={addToCartHandler.bind(null, null, selectedSpec, quantity)}
+          onClick={addToCartHandler.bind(null, {
+            productNo: props.product.productNo,
+            spec: selectedSpec,
+            quantity: quantity,
+            isAddFromCart: false,
+          })}
         />
       </Form>
     </div>

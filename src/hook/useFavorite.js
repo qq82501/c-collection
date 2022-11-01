@@ -1,14 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
 
-function useFavorite(product) {
+function useFavorite(addedItem) {
   const dispatch = useDispatch();
   const favItems = useSelector((state) => state.localFavorite);
-  const favArr = favItems.map((item) => item.productNo);
+  const allProducts = useSelector((state) => state.products);
 
   const updateFav = function () {
-    if (favArr.includes(product.productNo))
-      return dispatch({ type: "REMOVE_FAV", payload: product });
-    dispatch({ type: "ADD_FAV", payload: product });
+    const favItem = allProducts.find(
+      (product) => product.productNo === addedItem.productNo
+    );
+    if (favItems.some((item) => item.productNo === addedItem.productNo))
+      return dispatch({ type: "REMOVE_FAV", payload: favItem });
+    dispatch({ type: "ADD_FAV", payload: favItem });
   };
 
   return updateFav;

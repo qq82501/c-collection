@@ -9,28 +9,35 @@ function useAddCart(productItem) {
     setError(error);
   };
 
-  const addToCartHandler = function (_, spec = null, quantity, e) {
-    const isAddFromCart = productItem.hasOwnProperty("imgPath");
-    const cartUpdatedQuantity = +e.target.value - quantity;
-    console.log(cartUpdatedQuantity);
-    // if (isAddFromCart && e.target.value < quantity) return;
+  const addToCartHandler = function (addedItem, e) {
+    console.log(addedItem);
+    let cartUpdatedQuantity;
+    if (addedItem.isAddFromCart) {
+      cartUpdatedQuantity = +e.target.value - addedItem.quantity;
+    }
 
-    if (productItem.spec?.length > 0 && !spec) {
+    if (productItem.spec?.length > 0 && !addedItem.spec) {
       return setError("請選擇規格");
     }
 
     setError(null);
     const product = {
-      productNo: isAddFromCart
+      productNo: productItem.productNo,
+      productDetailNo: addedItem.isAddFromCart
         ? `${productItem.productNo}`
-        : `${productItem.productNo}${spec ? `-${spec}` : ""}`,
+        : `${productItem.productNo}${
+            addedItem.spec ? `-${addedItem.spec}` : ""
+          }`,
       title: productItem.title,
       price: productItem.price,
-      imgPath: isAddFromCart
+      imgPath: addedItem.isAddFromCart
         ? productItem.imgPath
         : `${productItem.productNo}/${productItem.imgs[0]}`,
-      spec: spec,
-      quantity: isAddFromCart ? cartUpdatedQuantity : quantity,
+      spec: productItem.spec,
+      selectedSpec: addedItem.spec,
+      quantity: addedItem.isAddFromCart
+        ? cartUpdatedQuantity
+        : addedItem.quantity,
     };
 
     console.log("ADD TO CART", product);

@@ -10,7 +10,7 @@
 
 .cart_item__container input {
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .cart_item__img {
@@ -31,8 +31,25 @@
   font-size: 1.4rem;
 }
 
-.cart_item__container .cart_item__price_box {
-  align-self: flex-end;
+.cart_item__price_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
   justify-self: right;
-  padding-right: 2rem;
+  padding: 1rem 1rem 0 0;
+}
+
+.cart_item__btns_box {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cart_item__fav_btn {
+  font-size: 2.6rem;
+}
+
+.cart_item__close_btn {
+  font-size: 2.6rem;
 }

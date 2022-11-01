@@ -14,7 +14,7 @@ function MyWishListPage() {
   const favContents = favItems.map((item) => {
     return (
       <FavItem
-        className={clickedProduct === item.productNo && "open-spec"}
+        className={clickedProduct.productNo === item.productNo && "open-spec"}
         key={item.productNo}
         product={item}
         onClick={openSpecListHandler}

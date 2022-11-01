@@ -66,3 +66,11 @@ export const addToCart = async function (para) {
   //   "https://c-collection-default-rtdb.firebaseio.com/products.json"
   // );
 };
+
+export const getAllProducts = async function () {
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/products.json"
+  );
+  const products = await res.json();
+  return products;
+};

@@ -1,8 +1,11 @@
 .input__container {
-  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
 }
 .postfix {
-  position: absolute;
+  /* display: inline; */
+  /* position: absolute;
   top: 0;
-  right: -10%;
+  right: -10%; */
 }

@@ -11,7 +11,12 @@ function SpecSelector(props) {
         className={styles.spec_selector__radio}
         type="radio"
         name={`spec-${props.product.productNo}`}
-        onClick={props.onAddToCart.bind(null, null, spec, 1)}
+        onClick={props.onAddToCart.bind(null, {
+          productNo: props.product.productNo,
+          spec: spec,
+          quantity: 1,
+          isAddFromCart: false,
+        })}
       />
     </label>
   ));
@@ -20,7 +25,12 @@ function SpecSelector(props) {
     <div className={styles.spec_selector__container}>
       <BtnAddCart
         className={styles.spec_selector__btn_add_cart}
-        onClick={props.onClick.bind(null, props.product.productNo, null, 1)}
+        onClick={props.onClick.bind(null, {
+          productNo: props.product.productNo,
+          spec: null,
+          quantity: 1,
+          isAddFromCart: false,
+        })}
       />
       <div className={styles.spec_selector__label_box}>{options}</div>
     </div>

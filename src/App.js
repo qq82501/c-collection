@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import Layout from "./components/layout/Layout";
 import WelcomePage from "./pages/WelcomePage";
 import ProductsListPage from "./pages/ProductsListPage";
-import { getProductsData, getProductDetail, addToCart } from "./helper/helper";
+import {
+  getProductsData,
+  getProductDetail,
+  addToCart,
+  getAllProducts,
+} from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import Page2 from "./pages/Page2";
 import MyWishListPage from "./pages/MyWishListPage";
@@ -15,13 +20,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getLocalData = function () {
+    const getLocalData = async function () {
       const localFavItems = JSON.parse(localStorage.getItem("localFav")) || [];
       const localCartItems =
         JSON.parse(localStorage.getItem("localCart")) || [];
+      const products = await getAllProducts();
       dispatch({
         type: "INITIAL_LOCAL_DATA",
-        payload: { fav: localFavItems, cart: localCartItems },
+        payload: {
+          fav: localFavItems,
+          cart: localCartItems,
+          products: products,
+        },
       });
     };
     getLocalData();

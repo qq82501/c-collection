@@ -1,0 +1,22 @@
+.my_cart_page__container {
+  padding: 10rem 2rem;
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 4rem;
+}
+
+.cartlist_box {
+  grid-row: 1/-1;
+}
+
+.btn__checkout {
+  background-color: #000;
+  color: #fff;
+  height: 8rem;
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+.btn__checkout:hover {
+  background-color: rgb(49, 49, 49);
+}

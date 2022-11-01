@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 const initialState = {
   localFavorite: [],
   localCart: [],
+  products: [],
 };
 
 const reducer = function (state = initialState, action) {
@@ -11,6 +12,7 @@ const reducer = function (state = initialState, action) {
       return {
         localFavorite: action.payload.fav,
         localCart: action.payload.cart,
+        products: action.payload.products,
       };
     }
     case "ADD_FAV":
@@ -57,6 +59,15 @@ const reducer = function (state = initialState, action) {
         ...state,
         localCart: newCartItems,
       };
+    case "REMOVE_CART_ITEM": {
+      console.log(action.payload);
+
+      const newCartItems = state.localCart.filter(
+        (item) => item.productNo !== action.payload.productNo
+      );
+      localStorage.setItem("localCart", JSON.stringify(newCartItems));
+      return { ...state, localCart: newCartItems };
+    }
 
     default:
       return state;
