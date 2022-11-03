@@ -10,6 +10,8 @@ a jewelry e-commerce website for side-project.
 4. Product detail page (Custom radio box)
 5. My wish list page
 6. Add to Cart (validation)
+7. Login in cart
+8. Checkout page
 
 ## Tools:
 

@@ -4,6 +4,8 @@ const initialState = {
   localFavorite: [],
   localCart: [],
   products: [],
+  loginUser: "",
+  selectedDelivery: null,
 };
 
 const reducer = function (state = initialState, action) {
@@ -67,6 +69,12 @@ const reducer = function (state = initialState, action) {
       );
       localStorage.setItem("localCart", JSON.stringify(newCartItems));
       return { ...state, localCart: newCartItems };
+    }
+    case "LOGIN": {
+      return { ...state, loginUser: action.payload };
+    }
+    case "SET_DELIVERY": {
+      return { ...state, selectedDelivery: action.payload };
     }
 
     default:

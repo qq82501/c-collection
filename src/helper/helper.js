@@ -74,3 +74,18 @@ export const getAllProducts = async function () {
   const products = await res.json();
   return products;
 };
+
+export const getMembers = async function () {
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/members.json"
+  );
+  const members = await res.json();
+  return members;
+};
+export const getDelivery = async function () {
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/delivery.json"
+  );
+  const delivery = await res.json();
+  return delivery;
+};

@@ -42,7 +42,7 @@ function Input(props) {
     <div className={styles.input__container}>
       <label>{`${props.labelTitle}`}</label>
       {input}
-      {props.postfix && <span className={styles.postfix}>TWD</span>}
+      {props.postfix && <span>TWD</span>}
     </div>
   );
 }

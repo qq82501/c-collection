@@ -1,32 +1,76 @@
 import { useState } from "react";
+import { useNavigate, useLoaderData } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import CartList from "../components/cart/CartList";
 import Delivery from "../components/cart/Delivery";
 import Total from "../components/cart/Total";
+import Modal from "../components/UI/Modal";
 import styles from "./MyCartPage.module.css";
+import LoginModal from "../components/login/LoginModal";
 
 function MyCartPage() {
-  const [delivery, setDelivery] = useState(null);
+  const navigate = useNavigate();
+  const loginUser = useSelector((state) => state.loginUser);
+  const selectedDelivery = useSelector((state) => state.selectedDelivery);
+  const delivery = useLoaderData();
 
-  const setDeliveryHandler = function (delivery) {
-    setDelivery(delivery);
+  const [isCheckOutClicked, setIsCheckOutClicked] = useState(false);
+  const [error, setError] = useState(null);
+
+  const checkOutHandler = function () {
+    if (!selectedDelivery) {
+      setError("*寄送方式未選");
+      return;
+    }
+
+    if (loginUser) {
+      navigate("/checkout", { state: { delivery } });
+    }
+
+    setIsCheckOutClicked(true);
   };
 
+  const closeModalHandler = function (e) {
+    if (
+      !e.target.classList.contains("model__backdrop") &&
+      !e.target.closest(".btn__close")
+    )
+      return;
+    setIsCheckOutClicked(false);
+  };
+
+  const clearErrorHandler = function () {
+    setError(null);
+  };
   return (
-    <div className={`nav-bar__height ${styles.my_cart_page__container}`}>
-      <div className={styles.cartlist_box}>
-        <CartList />
+    <>
+      <div className={`nav-bar__height ${styles.my_cart_page__container}`}>
+        <div className={styles.cartlist_box}>
+          <CartList />
+        </div>
+        <div>
+          <Delivery
+            selectedDelivery={selectedDelivery}
+            error={error}
+            onClearError={clearErrorHandler}
+            delivery={delivery}
+          />
+        </div>
+        <div>
+          <Total deliveryFee={selectedDelivery ? selectedDelivery.cost : 0} />
+        </div>
+        <button className={styles.btn__checkout} onClick={checkOutHandler}>
+          結帳 →
+        </button>
       </div>
-      <div>
-        <Delivery
-          onDeliveryHandler={setDeliveryHandler}
-          selectedDelivery={delivery}
+      {isCheckOutClicked && (
+        <Modal
+          overlap={<LoginModal onClick={closeModalHandler} />}
+          onClick={closeModalHandler}
         />
-      </div>
-      <div>
-        <Total deliveryFee={delivery ? delivery.cost : 0} />
-      </div>
-      <button className={styles.btn__checkout}>結帳 →</button>
-    </div>
+      )}
+    </>
   );
 }
 

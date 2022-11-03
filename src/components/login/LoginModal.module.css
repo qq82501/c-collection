@@ -1,0 +1,61 @@
+.login_modal__container {
+  background-color: #dfdfdf;
+  width: 60rem;
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  font-size: 2.4rem;
+  position: relative;
+}
+
+.login_modal__title {
+  font-weight: 500;
+}
+
+.login_modal__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login_modal__btn_login {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+.login_modal__btn_login:hover {
+  background-color: #3d3d3d;
+}
+
+.go_to_register {
+  align-self: flex-end;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.link__register:link,
+.link__register:visited {
+  font-weight: 500;
+}
+.link__register:hover,
+.link__register:active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.login_modal__btn_close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
+}

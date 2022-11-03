@@ -10,6 +10,8 @@ function MainNavigator() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const favItems = useSelector((state) => state.localFavorite);
   const cartItems = useSelector((state) => state.localCart);
+  const loginUser = useSelector((state) => state.loginUser);
+
   const cartQuantity = cartItems.reduce((acc, item) => {
     return (acc += item.quantity);
   }, 0);
@@ -21,6 +23,17 @@ function MainNavigator() {
   const closeCategoryHandler = function () {
     setIsCategoryOpen(false);
   };
+
+  const loginButton = loginUser ? (
+    <NavButton>
+      <ion-icon name="person"></ion-icon>
+    </NavButton>
+  ) : (
+    <NavButton>
+      <ion-icon name="person-outline"></ion-icon>
+    </NavButton>
+  );
+
   return (
     <>
       <header className={`${styles.header} ${isCategoryOpen && "cate-open"}`}>
@@ -69,11 +82,7 @@ function MainNavigator() {
                 ""
               )}
             </li>
-            <li>
-              <NavButton>
-                <ion-icon name="person-outline"></ion-icon>
-              </NavButton>
-            </li>
+            <li>{loginButton}</li>
           </ul>
         </nav>
       </header>

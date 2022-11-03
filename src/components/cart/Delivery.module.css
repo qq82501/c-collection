@@ -48,6 +48,12 @@
 .delivery__selector_box {
   position: relative;
 }
+
+.error_message {
+  font-size: 1.6rem;
+  color: red;
+  font-weight: 500;
+}
 .delivery__selector {
   background-color: #dfdfdf;
   height: 4.6rem;
@@ -56,6 +62,11 @@
   display: flex;
   align-items: center;
   padding-left: 2rem;
+  border: 2px solid transparent;
+}
+
+.delivery__selector_error {
+  border: 2px solid red;
 }
 
 .delivery__arrow {
