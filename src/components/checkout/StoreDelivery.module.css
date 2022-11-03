@@ -1,0 +1,16 @@
+.store_delivery__container {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.store_delivery__container label,
+.store_delivery__container select {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.store_delivery__container label {
+  padding-right: 1rem;
+}

@@ -23,22 +23,6 @@ function App() {
   const loginUser = useSelector((state) => state.loginUser);
   console.log(loginUser);
   useEffect(() => {
-    const test = async function () {
-      const res = await fetch(
-        "http://www.ibon.com.tw/retail_inquiry_ajax.aspx"
-
-        // {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({
-        //     strTargetField: "COUNTY",
-        //     strKeyWords: "台北市",
-        //   }),
-        // }
-      );
-      const data = await res.json();
-      console.log(data);
-    };
     const getLocalData = async function () {
       const localFavItems = JSON.parse(localStorage.getItem("localFav")) || [];
       const localCartItems =
@@ -54,7 +38,6 @@ function App() {
       });
     };
     getLocalData();
-    test();
   }, [dispatch]);
 
   const router = createBrowserRouter([

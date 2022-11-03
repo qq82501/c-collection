@@ -7,7 +7,7 @@ function Input(props) {
     input = (
       <input
         style={
-          props.labelTitle.includes("金額")
+          props.labelTitle.includes("額")
             ? { textAlign: "end", paddingRight: "5px" }
             : {}
         }
@@ -15,7 +15,7 @@ function Input(props) {
         readOnly={props.readOnly}
         value={props.value}
         size={
-          props.labelTitle.includes("金額")
+          props.labelTitle.includes("額")
             ? 2
             : props.value.length > 6
             ? props.value.length * 1.5
@@ -32,7 +32,14 @@ function Input(props) {
       </option>
     ));
     input = (
-      <select onChange={props.onChange} defaultValue={props.value}>
+      <select
+        onChange={props.onChange}
+        defaultValue={props.value}
+        required={props.required}
+      >
+        <option selected disabled>
+          請選擇
+        </option>
         {options}
       </select>
     );

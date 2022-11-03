@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./DeliveryDetail.module.css";
 import { useLocation } from "react-router-dom";
 import HomeDelivery from "./HomeDelivery";
+import StoreDelivery from "./StoreDelivery";
 
 function DeliveryDetail() {
   const dispatch = useDispatch();
   const location = useLocation();
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
-  console.log(selectedDelivery);
 
   const { delivery } = location.state;
 
@@ -35,10 +35,10 @@ function DeliveryDetail() {
     </button>
   ));
 
-  const tabDetail = selectedDelivery.title.includes("到府") ? (
+  const tabDetail = selectedDelivery.title.includes("宅") ? (
     <HomeDelivery />
   ) : (
-    "123"
+    <StoreDelivery />
   );
 
   return (
