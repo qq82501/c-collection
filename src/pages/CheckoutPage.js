@@ -1,5 +1,4 @@
-import { useLocation } from "react-router-dom";
-import styles from "./CheckoutPage.module.css";
+// import styles from "./CheckoutPage.module.css";
 import Contact from "../components/checkout/Contack";
 import DeliveryDetail from "../components/checkout/DeliveryDetail";
 
