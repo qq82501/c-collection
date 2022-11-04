@@ -1,6 +1,15 @@
 .delivery_detail__container {
 }
 
+.delivery_detail__container label,
+.delivery_detail__container select {
+  font-size: 2rem;
+}
+
+.delivery_detail__container label {
+  padding-right: 1rem;
+}
+
 .tabs__box {
   display: flex;
   gap: 1rem;
@@ -17,5 +26,25 @@
 
 .tab__detail_box {
   background-color: #dfdfdf;
+  padding: 3rem 2rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.payment_box {
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.payment_message {
+  font-size: 2rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+
+  /* padding: 3rem 0rem 1rem 0; */
 }

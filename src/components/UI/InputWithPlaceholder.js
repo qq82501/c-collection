@@ -9,6 +9,8 @@ function InputWithPlaceHolder(props) {
         name={props.id}
         type={props.type}
         defaultValue={props.defaultValue}
+        value={props.value}
+        onChange={props.onChange}
         required
       />
       <label htmlFor={props.id} className={styles.placeholder}>

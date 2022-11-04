@@ -4,10 +4,14 @@ import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 function HomeDelivery() {
   return (
     <div className={styles.home_delivery__container}>
-      <InputWithPlaceHolder placeholder="收件者—姓" id="lastName" type="text" />
+      <InputWithPlaceHolder
+        placeholder="收件者—姓"
+        id="homeLastName"
+        type="text"
+      />
       <InputWithPlaceHolder
         placeholder="收件者—名"
-        id="firstname"
+        id="homeFirstName"
         type="text"
       />
       <InputWithPlaceHolder

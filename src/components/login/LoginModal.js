@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 import styles from "./LoginModal.module.css";
 import useLogin from "../../hook/useLogin";
+import { login } from "../../thunk/loginThunkAction";
 
 function LoginModal(props) {
   const delivery = useLoaderData();
@@ -15,7 +16,8 @@ function LoginModal(props) {
     const formData = new FormData(e.target);
     const { isValid, loggedUser } = await loginAuth(formData);
     if (isValid) {
-      dispatch({ type: "LOGIN", payload: loggedUser });
+      dispatch(login(loggedUser));
+      // dispatch({ type: "LOGIN", payload: loggedUser });
       navigate("/checkout", { state: { delivery } });
     }
   };

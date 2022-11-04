@@ -2,6 +2,7 @@ import styles from "./StoreDelivery.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Input from "../UI/Input";
+import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 
 function StoreDelivery() {
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
@@ -73,27 +74,37 @@ function StoreDelivery() {
   ];
 
   return (
-    <form className={styles.store_delivery__container}>
-      <Input
-        labelTitle="縣市 : "
-        selection={cities}
-        onChange={setCityHandler}
-        required={true}
-      />
-      <Input
-        labelTitle="行政區 : "
-        selection={dists}
-        onChange={setDistHandler}
-        required={true}
-      />
-      <Input
-        labelTitle="道路 : "
-        selection={roads}
-        onChange={setRoadHandler}
-        required={true}
-      />
-      <Input labelTitle="店家 : " selection={availableStore} required={true} />
-    </form>
+    <div className={styles.store_delivery__container}>
+      <div className={styles.store_delivery__recipient_box}>
+        <InputWithPlaceHolder placeholder="收件人-姓" id="recipientLast" />
+        <InputWithPlaceHolder placeholder="收件人-名" id="recipientFirst" />
+      </div>
+      <div className={styles.store_delivery__selector_box}>
+        <Input
+          labelTitle="縣市 : "
+          selection={cities}
+          onChange={setCityHandler}
+          required={true}
+        />
+        <Input
+          labelTitle="行政區 : "
+          selection={dists}
+          onChange={setDistHandler}
+          required={true}
+        />
+        <Input
+          labelTitle="道路 : "
+          selection={roads}
+          onChange={setRoadHandler}
+          required={true}
+        />
+        <Input
+          labelTitle="店家 : "
+          selection={availableStore}
+          required={true}
+        />
+      </div>
+    </div>
   );
 }
 

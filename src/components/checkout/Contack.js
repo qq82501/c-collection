@@ -4,13 +4,12 @@ import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 
 function Contact() {
   const loginUser = useSelector((state) => state.loginUser);
-  console.log(loginUser);
 
   return (
     <div className={styles.contact__container}>
       <p className={styles.contact__title}>訂購人資訊</p>
       <InputWithPlaceHolder
-        placeholder="姓"
+        placeholder=" 姓"
         defaultValue={loginUser.lastName}
         id="lastName"
         type="text"

@@ -16,7 +16,6 @@ const categories = [
 export const wait = function (milisecond) {
   return new Promise(function (resolve, reject) {
     const timer = setInterval(() => {
-      console.log(2222);
       return resolve(timer);
     }, milisecond);
   });

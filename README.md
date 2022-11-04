@@ -11,7 +11,7 @@ a jewelry e-commerce website for side-project.
 5. My wish list page
 6. Add to Cart (validation)
 7. Login in cart
-8. Checkout page
+8. Checkout page (various paymend method)
 
 ## Tools:
 

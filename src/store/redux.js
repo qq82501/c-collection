@@ -4,7 +4,7 @@ const initialState = {
   localFavorite: [],
   localCart: [],
   products: [],
-  loginUser: "",
+  loginUser: null,
   selectedDelivery: null,
 };
 
@@ -12,9 +12,11 @@ const reducer = function (state = initialState, action) {
   switch (action.type) {
     case "INITIAL_LOCAL_DATA": {
       return {
+        ...state,
         localFavorite: action.payload.fav,
         localCart: action.payload.cart,
         products: action.payload.products,
+        loginUser: action.payload.loginUser,
       };
     }
     case "ADD_FAV":
@@ -71,11 +73,30 @@ const reducer = function (state = initialState, action) {
       return { ...state, localCart: newCartItems };
     }
     case "LOGIN": {
+      localStorage.setItem("loginUser", JSON.stringify(action.payload));
       return { ...state, loginUser: action.payload };
     }
     case "SET_DELIVERY": {
       return { ...state, selectedDelivery: action.payload };
     }
+    case "CREATE_ORDER": {
+      const orders = state.loginUser.order ? [...state.loginUser.order] : [];
+      orders.push(action.payload.orderNo);
+      return {
+        ...state,
+        loginUser: {
+          ...state.loginUser,
+          order: orders,
+        },
+      };
+    }
+    case "LOGOUT": {
+      localStorage.removeItem("loginUser");
+      return { ...state, loginUser: null };
+    }
+    case "TEST":
+      console.log("redux test");
+      return state;
 
     default:
       return state;

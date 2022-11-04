@@ -1,0 +1,31 @@
+.input__container {
+  display: flex;
+  align-items: center;
+}
+
+.radios_box {
+  display: inline-flex;
+  gap: 1rem;
+}
+
+.radio__label {
+  background-color: #dfdfdf;
+  border: 1px solid rgb(176, 176, 176);
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  font-weight: 300;
+  padding: 0.2rem 1.2rem;
+  margin-right: 0 !important;
+  cursor: pointer;
+}
+.radio__label:hover,
+.selected {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.radio {
+  display: none;
+}

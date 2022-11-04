@@ -10,7 +10,6 @@ function useAddCart(productItem) {
   };
 
   const addToCartHandler = function (addedItem, e) {
-    console.log(addedItem);
     let cartUpdatedQuantity;
     if (addedItem.isAddFromCart) {
       cartUpdatedQuantity = +e.target.value - addedItem.quantity;
@@ -40,7 +39,6 @@ function useAddCart(productItem) {
         : addedItem.quantity,
     };
 
-    console.log("ADD TO CART", product);
     dispatch({ type: "ADD_CART", payload: product });
 
     // fetcher.submit(

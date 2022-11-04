@@ -1,15 +1,78 @@
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./CheckoutPage.module.css";
 import Contact from "../components/checkout/Contack";
 import DeliveryDetail from "../components/checkout/DeliveryDetail";
 import OrderDetail from "../components/checkout/OrderDetail";
+import Total from "../components/cart/Total";
+import { submitOrder } from "../thunk/submitOrderThunkAction";
 
 function CheckoutPage() {
+  const dispatch = useDispatch();
+  const selectedDelivery = useSelector((state) => state.selectedDelivery);
+  const cartItems = useSelector((state) => state.localCart);
+  const loginUser = useSelector((state) => state.loginUser);
+  console.log(loginUser);
+
+  const submitOrderHandler = async function (e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const order = {
+      orderUser: loginUser.account,
+      orderNo: `${loginUser.account.slice(0, 2)}${Date.now()}`,
+      orderDate: `${new Date()}`,
+      orderer: {
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        contact: formData.get("phone"),
+        email: formData.get("email"),
+      },
+      delivery: {
+        deliveryBy: selectedDelivery.title,
+        deliveryFee: selectedDelivery.cost,
+      },
+      payment: {
+        payBy: formData.get("payment"),
+      },
+      product: cartItems,
+    };
+
+    if (formData.get("payment") === "信用卡扣款") {
+      order.payment.credit = {
+        creditNo: formData.get("cardNumber").replaceAll(" ", ""),
+        expiryDate: formData.get("expire"),
+        csv: formData.get("csv"),
+      };
+    }
+
+    if (formData.get("payment") === "銀行轉帳") {
+      order.payment.transferAcc = Array.from({ length: 16 }, (cur) =>
+        Math.floor(Math.random() * 10)
+      ).join("");
+    }
+
+    dispatch(submitOrder(order));
+
+    // const res = await fetch(
+    //   "https://c-collection-default-rtdb.firebaseio.com/order.json"
+    // );
+    console.log(order);
+  };
+
   return (
-    <div className={`nav-bar__height ${styles.checkout_page__container}`}>
+    <form
+      className={`nav-bar__height ${styles.checkout_page__container}`}
+      onSubmit={submitOrderHandler}
+    >
       <Contact />
-      <OrderDetail />
+      <div name="order_detail">
+        <OrderDetail />
+        <Total deliveryFee={selectedDelivery.cost} />
+        <button type="submit" className={styles.btn__send_order}>
+          送出訂單
+        </button>
+      </div>
       <DeliveryDetail />
-    </div>
+    </form>
   );
 }
 

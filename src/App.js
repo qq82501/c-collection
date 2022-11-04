@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Layout from "./components/layout/Layout";
 import WelcomePage from "./pages/WelcomePage";
 import ProductsListPage from "./pages/ProductsListPage";
@@ -20,20 +20,20 @@ import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
-  const loginUser = useSelector((state) => state.loginUser);
-  console.log(loginUser);
   useEffect(() => {
     const getLocalData = async function () {
       const localFavItems = JSON.parse(localStorage.getItem("localFav")) || [];
       const localCartItems =
         JSON.parse(localStorage.getItem("localCart")) || [];
       const products = await getAllProducts();
+      const loginUser = JSON.parse(localStorage.getItem("loginUser"));
       dispatch({
         type: "INITIAL_LOCAL_DATA",
         payload: {
           fav: localFavItems,
           cart: localCartItems,
           products: products,
+          loginUser,
         },
       });
     };

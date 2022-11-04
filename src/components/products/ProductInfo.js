@@ -5,6 +5,7 @@ import styles from "./ProductInfo.module.css";
 import useFavorite from "../../hook/useFavorite";
 import BtnAddCart from "../UI/BtnAddCart";
 import useAddCart from "../../hook/useAddCart";
+import InputRadio from "../UI/InputRadio";
 
 function ProductInfo(props) {
   const [selectedSpec, setSelectedSpec] = useState(null);
@@ -41,26 +42,6 @@ function ProductInfo(props) {
     setQuantity(quantity);
   };
 
-  const specRadios =
-    product.spec &&
-    product.spec.map((spec) => (
-      <label
-        key={spec}
-        className={`${styles.spec_radio__label} ${
-          spec === selectedSpec && styles.spec_selected
-        } `}
-      >
-        <span>{spec}</span>
-        <input
-          className={styles.spec_radio}
-          type="radio"
-          name="spec"
-          value={spec}
-          onClick={specSelectHandler}
-        />
-      </label>
-    ));
-
   return (
     <div className={styles.product_info__container}>
       <div className={styles.product_info__text_box}>
@@ -81,8 +62,13 @@ function ProductInfo(props) {
           {product.spec && (
             <div className={`${error && styles.invalid}`}>
               <span className={styles.error_message}>{error}</span>
-              <label>規格:</label>
-              <div className={styles.spec_radio__box}>{specRadios}</div>
+              <InputRadio
+                labelTitle="規格:"
+                name="spec"
+                options={product.spec}
+                selected={selectedSpec}
+                onClick={specSelectHandler}
+              />
             </div>
           )}
           <div>
