@@ -12,6 +12,7 @@ function Input(props) {
             : {}
         }
         type={props.type}
+        id={props.id}
         readOnly={props.readOnly}
         value={props.value}
         size={
@@ -35,6 +36,7 @@ function Input(props) {
       <select
         onChange={props.onChange}
         defaultValue={props.value}
+        name={props.id}
         required={props.required}
       >
         <option selected disabled>

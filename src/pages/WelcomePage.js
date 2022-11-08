@@ -20,18 +20,6 @@ const ads = [
   },
 ];
 
-// const categories = [
-//   {
-//     title: "耳環",
-//     to: "/product/earrings",
-//     childCat: [
-//       { title: "夾式耳環", to: "/product/earrings/cuff" },
-//       { title: "穿孔式耳環", to: "/product/earrings/piercing" },
-//     ],
-//   },
-//   { title: "戒指", to: "/product/rings", childCat: [] },
-// ];
-
 function WelcomePage() {
   return (
     <div className="center">

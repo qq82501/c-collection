@@ -9,7 +9,6 @@ import {
   getProductsData,
   getProductDetail,
   addToCart,
-  getAllProducts,
   getDelivery,
 } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -17,27 +16,12 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import MyWishListPage from "./pages/MyWishListPage";
 import MyCartPage from "./pages/MyCartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import initialStateThunk from "./thunk/initiateStateThunkAction";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const getLocalData = async function () {
-      const localFavItems = JSON.parse(localStorage.getItem("localFav")) || [];
-      const localCartItems =
-        JSON.parse(localStorage.getItem("localCart")) || [];
-      const products = await getAllProducts();
-      const loginUser = JSON.parse(localStorage.getItem("loginUser"));
-      dispatch({
-        type: "INITIAL_LOCAL_DATA",
-        payload: {
-          fav: localFavItems,
-          cart: localCartItems,
-          products: products,
-          loginUser,
-        },
-      });
-    };
-    getLocalData();
+    dispatch(initialStateThunk());
   }, [dispatch]);
 
   const router = createBrowserRouter([

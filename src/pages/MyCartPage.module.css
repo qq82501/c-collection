@@ -16,7 +16,17 @@
   height: 8rem;
   font-size: 3.6rem;
   font-weight: 700;
+  cursor: pointer;
 }
+.btn__checkout:disabled {
+  cursor: not-allowed;
+  background-color: rgb(164, 164, 164);
+  color: #777;
+}
+.btn__checkout:disabled:hover {
+  background-color: rgb(164, 164, 164);
+}
+
 .btn__checkout:hover {
   background-color: rgb(49, 49, 49);
 }

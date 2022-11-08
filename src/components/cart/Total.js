@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import styles from "./Total.module.css";
 
 function Total(props) {
-  const cartItems = useSelector((state) => state.localCart);
+  const { localCart, loginUser } = useSelector((state) => state);
+  const cartItems = loginUser ? loginUser?.cartItem || [] : localCart;
 
   const productSum = cartItems.reduce((acc, item) => {
     return (acc += item.price * item.quantity);

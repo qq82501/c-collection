@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./ProductItem.module.css";
-import useFavorite from "../../hook/useFavorite";
+import updateFav from "../../thunk/updateFavThunkAction";
 
 function ProductItem(props) {
-  const favItems = useSelector((state) => state.localFavorite);
+  const dispatch = useDispatch();
+  const localFavItems = useSelector((state) => state.localFavorite);
+  const loginUser = useSelector((state) => state.loginUser);
+  const favItems = loginUser ? loginUser?.favItem || [] : localFavItems;
   const { productNo } = props.product;
-  const updateFav = useFavorite(props.product);
 
   const [isImageChange, setIsImageChange] = useState(false);
   const imageChangeHandler = function () {
@@ -15,7 +17,7 @@ function ProductItem(props) {
   };
 
   const updateFavHandler = function () {
-    updateFav();
+    dispatch(updateFav(props.product));
   };
 
   return (

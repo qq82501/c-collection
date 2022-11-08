@@ -26,6 +26,10 @@ code {
     monospace;
 }
 
+ul {
+  list-style: none;
+}
+
 .nav-bar__height {
   padding-top: 6rem;
 }
@@ -94,4 +98,18 @@ input[readOnly]:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn__login {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+.btn__login:hover {
+  background-color: #3d3d3d;
 }

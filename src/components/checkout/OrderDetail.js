@@ -3,7 +3,8 @@ import OrderItem from "./OrderItem";
 import { useSelector } from "react-redux";
 
 function OrderDetail() {
-  const cartItems = useSelector((state) => state.localCart);
+  const { localCart, loginUser } = useSelector((state) => state);
+  const cartItems = loginUser ? loginUser?.cartItem || [] : localCart;
 
   const orderItems = cartItems.map((item) => (
     <OrderItem product={item} key={item.productDetailNo} />

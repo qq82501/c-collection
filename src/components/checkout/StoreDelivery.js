@@ -5,7 +5,7 @@ import Input from "../UI/Input";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 
 function StoreDelivery() {
-  const selectedDelivery = useSelector((state) => state.selectedDelivery);
+  const { selectedDelivery, loginUser } = useSelector((state) => state);
   const [stores, setStores] = useState([]);
   const [selected, setSelected] = useState({ city: "", dist: "", road: "" });
 
@@ -76,29 +76,41 @@ function StoreDelivery() {
   return (
     <div className={styles.store_delivery__container}>
       <div className={styles.store_delivery__recipient_box}>
-        <InputWithPlaceHolder placeholder="收件人-姓" id="recipientLast" />
-        <InputWithPlaceHolder placeholder="收件人-名" id="recipientFirst" />
+        <InputWithPlaceHolder
+          placeholder="收件人-姓"
+          id="recipientLast"
+          defaultValue={loginUser.lastName}
+        />
+        <InputWithPlaceHolder
+          placeholder="收件人-名"
+          id="recipientFirst"
+          defaultValue={loginUser.firstName}
+        />
       </div>
       <div className={styles.store_delivery__selector_box}>
         <Input
+          id="city"
           labelTitle="縣市 : "
           selection={cities}
           onChange={setCityHandler}
           required={true}
         />
         <Input
+          id="dist"
           labelTitle="行政區 : "
           selection={dists}
           onChange={setDistHandler}
           required={true}
         />
         <Input
+          id="road"
           labelTitle="道路 : "
           selection={roads}
           onChange={setRoadHandler}
           required={true}
         />
         <Input
+          id="storeName"
           labelTitle="店家 : "
           selection={availableStore}
           required={true}

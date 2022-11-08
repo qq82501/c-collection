@@ -81,6 +81,23 @@ export const getMembers = async function () {
   const members = await res.json();
   return members;
 };
+
+export const updateMember = async function (userData) {
+  const allMembers = await getMembers();
+  let existedUserIndex = allMembers.findIndex(
+    (member) => member.account === userData.account
+  );
+  if (existedUserIndex > -1) {
+    allMembers[existedUserIndex] = userData;
+  }
+
+  await fetch("https://c-collection-default-rtdb.firebaseio.com/members.json", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(allMembers),
+  });
+};
+
 export const getDelivery = async function () {
   const res = await fetch(
     "https://c-collection-default-rtdb.firebaseio.com/delivery.json"

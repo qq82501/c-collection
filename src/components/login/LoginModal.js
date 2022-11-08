@@ -2,22 +2,18 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 import styles from "./LoginModal.module.css";
-import useLogin from "../../hook/useLogin";
 import { login } from "../../thunk/loginThunkAction";
 
 function LoginModal(props) {
   const delivery = useLoaderData();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loginAuth } = useLogin();
 
   const loginAuthHandler = async function (e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const { isValid, loggedUser } = await loginAuth(formData);
+    const isValid = await dispatch(login(formData));
     if (isValid) {
-      dispatch(login(loggedUser));
-      // dispatch({ type: "LOGIN", payload: loggedUser });
       navigate("/checkout", { state: { delivery } });
     }
   };
@@ -32,7 +28,7 @@ function LoginModal(props) {
           id="password"
           type="password"
         />
-        <button type="submit" className={styles.login_modal__btn_login}>
+        <button type="submit" className={"btn__login"}>
           登入
         </button>
       </form>

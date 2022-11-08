@@ -33,6 +33,10 @@
   gap: 4rem;
 }
 
+.nav-icons {
+  /* z-index: 100; */
+}
+
 .nav-icons button {
   border-right: 0.7px solid #ccc;
   cursor: pointer;
@@ -70,4 +74,22 @@
   justify-content: center;
   align-items: center;
   transform: scale(0.8);
+}
+
+.main_nav__nav_login_box {
+  position: fixed;
+  bottom: calc(100% - 6rem);
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.5s all;
+}
+
+:global(.nav_login__open) ~ .main_nav__nav_login_box {
+  transform: translateY(98%);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
 }

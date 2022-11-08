@@ -3,7 +3,6 @@ import Input from "../UI/Input";
 
 function OrderItem(props) {
   const { product } = props;
-  console.log(product);
 
   return (
     <div className={styles.order_item__container}>

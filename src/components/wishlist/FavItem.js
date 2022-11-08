@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./FavItem.module.css";
-import useFavorite from "../../hook/useFavorite";
 import SpecSelector from "./SpecSelector";
-import useAddCart from "../../hook/useAddCart";
+import updateFav from "../../thunk/updateFavThunkAction";
+import useUpdateCart from "../../hook/useUpdaeCart";
+import Modal from "../UI/Modal";
 
 function FavItem(props) {
-  const { addToCartHandler } = useAddCart(props.product);
-  const updateFav = useFavorite(props.product);
+  const { updateCartThunk, isLoading } = useUpdateCart();
+  const dispatch = useDispatch();
   const [isImageChange, setIsImageChange] = useState(false);
 
   const { productNo } = props.product;
@@ -18,12 +20,17 @@ function FavItem(props) {
   };
 
   const updateFavHandler = function () {
-    updateFav();
+    dispatch(updateFav(props.product));
+  };
+
+  const updateCartHandler = function (addedDetail) {
+    dispatch(updateCartThunk(props.product, addedDetail));
   };
 
   return (
     <>
       <div className={`${styles.product_item__container} ${props.className}`}>
+        {isLoading && <Modal overlap={<div>Loading</div>} />}
         <div className={styles.product_item__img_box}>
           <Link to={`/productDetail/${productNo}`} className="link">
             <img
@@ -42,15 +49,6 @@ function FavItem(props) {
           >
             <ion-icon name="close-outline"></ion-icon>
           </button>
-          {/* <button
-            onClick={updateFavHandler}
-            className={`favorite ${styles.product_item__favorite} ${
-              favItems.some((item) => item.productNo === productNo) &&
-              "fav__active"
-            }`}
-          >
-            <ion-icon name="heart"></ion-icon>
-          </button> */}
         </div>
         <div className={styles.product_item__info}>
           <p>{props.product.title}</p>
@@ -59,8 +57,8 @@ function FavItem(props) {
           >{`${props.product.price} TWD`}</p>
           <SpecSelector
             product={props.product}
-            onClick={spec.length ? props.onClick : addToCartHandler}
-            onAddToCart={addToCartHandler}
+            onClick={spec.length ? props.onClick : updateCartHandler}
+            onAddToCart={updateCartHandler}
           />
         </div>
       </div>

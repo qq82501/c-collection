@@ -17,15 +17,14 @@ function CheckoutPage() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const order = {
-      orderUser: loginUser.account,
+      orderUser: {
+        lastName: loginUser.lastName,
+        firstName: loginUser.firstName,
+        contact: loginUser.contactNumber,
+        email: loginUser.account,
+      },
       orderNo: `${loginUser.account.slice(0, 2)}${Date.now()}`,
       orderDate: `${new Date()}`,
-      orderer: {
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName"),
-        contact: formData.get("phone"),
-        email: formData.get("email"),
-      },
       delivery: {
         deliveryBy: selectedDelivery.title,
         deliveryFee: selectedDelivery.cost,
@@ -36,7 +35,28 @@ function CheckoutPage() {
       product: cartItems,
     };
 
+    if (selectedDelivery.title === "7-11店到店") {
+      order.delivery.recipient = `${formData.get(
+        "recipientLast"
+      )}  ${formData.get("recipientFirst")}`;
+      order.delivery.store = {
+        city: formData.get("city"),
+        dist: formData.get("dist"),
+        road: formData.get("road"),
+        storeName: formData.get("storeName"),
+      };
+    }
+
+    if (selectedDelivery.title === "宅配") {
+      order.delivery.recipient = `${formData.get(
+        "homeLastName"
+      )}  ${formData.get("homeFirstName")}`;
+      order.delivery.contact = formData.get("contactNumber");
+      order.delivery.address = formData.get("address");
+    }
+
     if (formData.get("payment") === "信用卡扣款") {
+      order.payment.paymentStatus = "已完成";
       order.payment.credit = {
         creditNo: formData.get("cardNumber").replaceAll(" ", ""),
         expiryDate: formData.get("expire"),
@@ -45,6 +65,7 @@ function CheckoutPage() {
     }
 
     if (formData.get("payment") === "銀行轉帳") {
+      order.payment.paymentStatus = "未完成";
       order.payment.transferAcc = Array.from({ length: 16 }, (cur) =>
         Math.floor(Math.random() * 10)
       ).join("");

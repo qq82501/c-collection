@@ -4,7 +4,10 @@ import styles from "./MyWishListPage.module.css";
 import FavItem from "../components/wishlist/FavItem";
 
 function MyWishListPage() {
-  const favItems = useSelector((state) => state.localFavorite);
+  const loginUser = useSelector((state) => state.loginUser);
+  const localFavItems = useSelector((state) => state.localFavorite);
+  const favItems = loginUser ? loginUser?.favItem || [] : localFavItems;
+
   const [clickedProduct, setClickedProduct] = useState("");
 
   const openSpecListHandler = function (productNo) {

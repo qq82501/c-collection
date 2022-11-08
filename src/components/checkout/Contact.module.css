@@ -17,3 +17,11 @@
   font-size: 3rem;
   font-weight: 300;
 }
+
+.contact__container label,
+.contact__container input {
+  font-size: 2rem;
+}
+.contact__container label {
+  margin-right: 1rem;
+}

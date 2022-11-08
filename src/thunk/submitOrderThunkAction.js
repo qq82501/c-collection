@@ -10,9 +10,9 @@ export function submitOrder(order) {
         }
       );
       console.log(res);
-      dispatch({ type: "CREATE_ORDER", payload: order });
+      // dispatch({ type: "CREATE_ORDER", payload: order });
     };
 
-    addOrder();
+    await addOrder();
   };
 }

@@ -10,84 +10,39 @@ const initialState = {
 
 const reducer = function (state = initialState, action) {
   switch (action.type) {
-    case "INITIAL_LOCAL_DATA": {
-      return {
-        ...state,
-        localFavorite: action.payload.fav,
-        localCart: action.payload.cart,
-        products: action.payload.products,
-        loginUser: action.payload.loginUser,
-      };
+    case "SYNC_STATE_DATA": {
+      return action.payload;
     }
-    case "ADD_FAV":
-      localStorage.setItem(
-        "localFav",
-        JSON.stringify([...state.localFavorite, action.payload])
-      );
-      return {
-        ...state,
-        localFavorite: [...state.localFavorite, action.payload],
-      };
-    case "REMOVE_FAV":
-      localStorage.setItem(
-        "localFav",
-        JSON.stringify(
-          state.localFavorite.filter(
-            (item) => item.productNo !== action.payload.productNo
-          )
-        )
-      );
-      return {
-        ...state,
-        localFavorite: state.localFavorite.filter(
-          (item) => item.productNo !== action.payload.productNo
-        ),
-      };
+    case "UPDATE_FAV": {
+      const updatedState = action.payload;
+      return updatedState;
+    }
 
-    case "ADD_CART":
-      const existedIndex = state.localCart.findIndex(
-        (item) => item.productNo === action.payload.productNo
-      );
-      let newCartItems;
-      if (existedIndex > -1) {
-        let existedItem = Object.assign({}, state.localCart[existedIndex]);
-        existedItem.quantity += action.payload.quantity;
-        newCartItems = [...state.localCart];
-        newCartItems[existedIndex] = existedItem;
-      }
-      if (existedIndex < 0) {
-        newCartItems = [...state.localCart, action.payload];
-      }
-      localStorage.setItem("localCart", JSON.stringify(newCartItems));
-      return {
-        ...state,
-        localCart: newCartItems,
-      };
+    case "UPDATE_CART": {
+      const updatedState = action.payload;
+      return updatedState;
+    }
+
     case "REMOVE_CART_ITEM": {
-      console.log(action.payload);
+      const updatedState = action.payload;
+      return updatedState;
+    }
 
-      const newCartItems = state.localCart.filter(
-        (item) => item.productNo !== action.payload.productNo
-      );
-      localStorage.setItem("localCart", JSON.stringify(newCartItems));
-      return { ...state, localCart: newCartItems };
-    }
-    case "LOGIN": {
-      localStorage.setItem("loginUser", JSON.stringify(action.payload));
-      return { ...state, loginUser: action.payload };
-    }
     case "SET_DELIVERY": {
       return { ...state, selectedDelivery: action.payload };
     }
     case "CREATE_ORDER": {
       const orders = state.loginUser.order ? [...state.loginUser.order] : [];
       orders.push(action.payload.orderNo);
+      return initialState;
+    }
+    case "LOGIN": {
+      const user = action.payload;
       return {
         ...state,
-        loginUser: {
-          ...state.loginUser,
-          order: orders,
-        },
+        localFavorite: [],
+        localCart: [],
+        loginUser: user,
       };
     }
     case "LOGOUT": {

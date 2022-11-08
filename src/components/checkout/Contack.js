@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import styles from "./Contact.module.css";
-import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
+import Input from "../UI/Input";
 
 function Contact() {
   const loginUser = useSelector((state) => state.loginUser);
@@ -8,29 +8,33 @@ function Contact() {
   return (
     <div className={styles.contact__container}>
       <p className={styles.contact__title}>訂購人資訊</p>
-      <InputWithPlaceHolder
-        placeholder=" 姓"
-        defaultValue={loginUser.lastName}
+      <Input
+        labelTitle="姓 :"
+        value={loginUser.lastName}
+        readOnly={true}
         id="lastName"
         type="text"
       />
-      <InputWithPlaceHolder
-        placeholder="名字"
-        defaultValue={loginUser.firstName}
-        id="firstName"
+      <Input
+        labelTitle="名字 :"
+        value={loginUser.firstName}
+        readOnly={true}
+        id="firatName"
         type="text"
       />
-      <InputWithPlaceHolder
-        placeholder="聯絡電話"
-        defaultValue={loginUser.contactNumber}
+      <Input
+        labelTitle="聯絡電話 :"
+        value={loginUser.contactNumber}
+        readOnly={true}
         id="phone"
-        type="phone"
+        type="text"
       />
-      <InputWithPlaceHolder
-        placeholder="信箱"
-        defaultValue={loginUser.account}
+      <Input
+        labelTitle="信箱 :"
+        value={loginUser.account}
+        readOnly={true}
         id="email"
-        type="email"
+        type="text"
       />
     </div>
   );

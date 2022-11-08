@@ -1,27 +1,32 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Form } from "react-router-dom";
 import styles from "./ProductInfo.module.css";
-import useFavorite from "../../hook/useFavorite";
+import updateFav from "../../thunk/updateFavThunkAction";
 import BtnAddCart from "../UI/BtnAddCart";
-import useAddCart from "../../hook/useAddCart";
+import useUpdateCart from "../../hook/useUpdaeCart";
 import InputRadio from "../UI/InputRadio";
+import Modal from "../UI/Modal";
 
 function ProductInfo(props) {
+  const dispatch = useDispatch();
+  const { updateCartThunk, error, setError, isLoading } = useUpdateCart();
   const [selectedSpec, setSelectedSpec] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const favItems = useSelector((state) => state.localFavorite);
-  const { addToCartHandler, error, setErrorHandler } = useAddCart(
-    props.product
-  );
+  const localFavItems = useSelector((state) => state.localFavorite);
+  const loginUser = useSelector((state) => state.loginUser);
+  const favItems = loginUser ? loginUser?.favItem || [] : localFavItems;
 
   if (error) console.error(error);
 
   const { product } = props;
 
-  const updateFav = useFavorite(product);
   const updateFavHandler = function () {
-    updateFav();
+    dispatch(updateFav(product));
+  };
+
+  const updateCartHandler = async function (addedDetail) {
+    dispatch(updateCartThunk(product, addedDetail));
   };
 
   const optionArr = Array.from({ length: 10 }, (cur, i) => i + 1);
@@ -33,7 +38,7 @@ function ProductInfo(props) {
 
   const specSelectHandler = function (e) {
     const spec = e.target.value;
-    setErrorHandler(null);
+    setError(null);
     setSelectedSpec(spec);
   };
 
@@ -44,6 +49,7 @@ function ProductInfo(props) {
 
   return (
     <div className={styles.product_info__container}>
+      {isLoading && <Modal overlap={<div>loading</div>} />}
       <div className={styles.product_info__text_box}>
         <p className={styles.product_info_title}>{product.title}</p>
         <button
@@ -80,7 +86,7 @@ function ProductInfo(props) {
           </div>
         </div>
         <BtnAddCart
-          onClick={addToCartHandler.bind(null, {
+          onClick={updateCartHandler.bind(null, {
             productNo: props.product.productNo,
             spec: selectedSpec,
             quantity: quantity,

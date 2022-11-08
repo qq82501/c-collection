@@ -11,12 +11,15 @@ import LoginModal from "../components/login/LoginModal";
 
 function MyCartPage() {
   const navigate = useNavigate();
-  const loginUser = useSelector((state) => state.loginUser);
-  const selectedDelivery = useSelector((state) => state.selectedDelivery);
+  const { localCart, loginUser, selectedDelivery } = useSelector(
+    (state) => state
+  );
   const delivery = useLoaderData();
+  const cartItems = loginUser ? loginUser?.cartItem || [] : localCart;
 
   const [isCheckOutClicked, setIsCheckOutClicked] = useState(false);
   const [error, setError] = useState(null);
+  console.log(1111, Boolean(cartItems.length));
 
   const checkOutHandler = function () {
     if (!selectedDelivery) {
@@ -60,7 +63,11 @@ function MyCartPage() {
         <div>
           <Total deliveryFee={selectedDelivery ? selectedDelivery.cost : 0} />
         </div>
-        <button className={styles.btn__checkout} onClick={checkOutHandler}>
+        <button
+          disabled={!Boolean(cartItems.length)}
+          className={styles.btn__checkout}
+          onClick={checkOutHandler}
+        >
           結帳 →
         </button>
       </div>
