@@ -6,7 +6,7 @@ export function submitOrder(order) {
     const userOrderList = [...loginUser?.order] || [];
 
     const addOrder = async function () {
-      const res = await fetch(
+      await fetch(
         "https://c-collection-default-rtdb.firebaseio.com/order.json",
         {
           method: "POST",

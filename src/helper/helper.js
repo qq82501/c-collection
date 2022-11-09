@@ -128,16 +128,13 @@ export const addNewMember = async function ({ request }) {
     },
   };
 
-  const res = await fetch(
-    "https://c-collection-default-rtdb.firebaseio.com/members.json",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(member),
-    }
-  );
+  await fetch("https://c-collection-default-rtdb.firebaseio.com/members.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(member),
+  });
   return redirect("/");
 };
 
