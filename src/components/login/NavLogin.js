@@ -23,12 +23,24 @@ function NavLogin(props) {
   const memberService = ["會員資料", "訂單資料"];
   const serviceItems = memberService.map((item) => (
     <li key={item}>
-      <Link className="link">{item}</Link>
+      <Link
+        className="link"
+        to={
+          item === "會員資料"
+            ? loginUser
+              ? `/memberProfile/${loginUser.account}`
+              : ""
+            : ""
+        }
+      >
+        {item}
+      </Link>
     </li>
   ));
 
   const navLoginContent = loginUser ? (
     <div className={styles.nav_login__member_mg_list_box}>
+      <h2>歡迎 {loginUser.account}</h2>
       <ul className={styles.nav_login__member_mg_list}>{serviceItems}</ul>
       <button className={styles.btn__logout} onClick={logoutHandler}>
         登出
@@ -44,7 +56,9 @@ function NavLogin(props) {
       <p className={styles.nav_login__register_box}>
         <span>尚未加入會員?</span>
         <span name="register">
-          <Link className={`link ${styles.link__register}`}>註冊</Link>
+          <Link to="/register" className={`link ${styles.link__register}`}>
+            註冊
+          </Link>
         </span>
       </p>
     </form>

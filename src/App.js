@@ -8,8 +8,9 @@ import ProductsListPage from "./pages/ProductsListPage";
 import {
   getProductsData,
   getProductDetail,
-  addToCart,
   getDelivery,
+  addNewMember,
+  getMember,
 } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import Page2 from "./pages/Page2";
@@ -17,6 +18,9 @@ import MyWishListPage from "./pages/MyWishListPage";
 import MyCartPage from "./pages/MyCartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import initialStateThunk from "./thunk/initiateStateThunkAction";
+import RegisterPage from "./pages/RegisterPage";
+import MemberProfilePage from "./pages/MemberProfilePage";
+import MemberEdit from "./components/member/MemberEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,12 +68,28 @@ function App() {
           path: "checkout",
           element: <CheckoutPage />,
         },
+        {
+          path: "register",
+          element: <RegisterPage />,
+        },
+        {
+          path: "memberProfile/:account",
+          element: <MemberProfilePage />,
+          loader: ({ params }) => {
+            return getMember(params.account);
+          },
+          children: [
+            {
+              path: "edit",
+              element: <MemberEdit />,
+            },
+          ],
+        },
       ],
     },
-
     {
-      path: "/addToCart",
-      action: addToCart,
+      path: "/addNewMember",
+      action: addNewMember,
     },
   ]);
 

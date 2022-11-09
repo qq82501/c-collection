@@ -1,5 +1,10 @@
+import { updateMember } from "../helper/helper";
+
 export function submitOrder(order) {
   return async function submitOrdertThunk(dispatch, getState) {
+    const { loginUser } = getState();
+    const userOrderList = [...loginUser?.order] || [];
+
     const addOrder = async function () {
       const res = await fetch(
         "https://c-collection-default-rtdb.firebaseio.com/order.json",
@@ -9,10 +14,11 @@ export function submitOrder(order) {
           body: JSON.stringify(order),
         }
       );
-      console.log(res);
-      // dispatch({ type: "CREATE_ORDER", payload: order });
     };
 
     await addOrder();
+    userOrderList.push(order.orderNo);
+    await updateMember({ ...loginUser, cartItem: [], order: userOrderList });
+    dispatch({ type: "SUBMIT_ORDER", payload: userOrderList });
   };
 }

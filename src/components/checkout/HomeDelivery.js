@@ -22,10 +22,15 @@ function HomeDelivery() {
       <InputWithPlaceHolder
         placeholder="連絡電話"
         id="contactNumber"
-        defaultValue={loginUser.contactNumber}
+        defaultValue={loginUser.contact}
         type="text"
       />
-      <InputWithPlaceHolder placeholder="收件地址" id="address" type="text" />
+      <InputWithPlaceHolder
+        placeholder="收件地址"
+        id="address"
+        type="text"
+        defaultValue={loginUser.address}
+      />
     </div>
   );
 }

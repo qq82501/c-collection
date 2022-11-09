@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.5rem; */
+  border: 2px solid black;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 0%;
+  left: 2rem;
+  background-color: #fff;
+  transform: translateY(-65%);
+  padding: 0 2rem;
+  font-size: 3rem;
+  font-weight: 300;
+}

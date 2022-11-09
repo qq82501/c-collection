@@ -34,6 +34,10 @@ ul {
   padding-top: 6rem;
 }
 
+.nav-bar__height__outline_container {
+  padding: 10rem 4rem 4rem 4rem;
+}
+
 .breadcrumb__height {
   padding-top: 4rem;
 }

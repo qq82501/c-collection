@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from "./CheckoutPage.module.css";
 import Contact from "../components/checkout/Contack";
 import DeliveryDetail from "../components/checkout/DeliveryDetail";
@@ -7,6 +8,7 @@ import Total from "../components/cart/Total";
 import { submitOrder } from "../thunk/submitOrderThunkAction";
 
 function CheckoutPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
   const cartItems = useSelector((state) => state.localCart);
@@ -73,10 +75,7 @@ function CheckoutPage() {
 
     dispatch(submitOrder(order));
 
-    // const res = await fetch(
-    //   "https://c-collection-default-rtdb.firebaseio.com/order.json"
-    // );
-    console.log(order);
+    return navigate("/");
   };
 
   return (

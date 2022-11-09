@@ -10,8 +10,11 @@ a jewelry e-commerce website for side-project.
 4. Product detail page (Custom radio box)
 5. My wish list page
 6. Add to Cart (with validation, custom hook + redux thunk)
-7. Checkout page (various paymend method)
+7. Checkout page (various paymend method, auto fill-in)
 8. Login / Logout (sync user data from DB, plus adding local data into user data)
+9. Member profile browsing and data management.
+10. Register page
+11. Order submit and store in DB.
 
 ## Tools:
 

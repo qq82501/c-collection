@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styles from "./Delivery.module.css";
 import { TruckIcon } from "@heroicons/react/24/outline";
+import OutlineContainer from "../UI/OutlineContainer";
 
 function Delivery(props) {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
@@ -63,17 +64,13 @@ function Delivery(props) {
   ));
 
   return (
-    <div
-      className={`${styles.delivery__container} ${
-        isOptionOpen && styles.delivery__options_shown
-      }  `}
-    >
-      <div>
-        <div className={styles.delivery__heading}>寄送方式</div>
-
+    <>
+      <OutlineContainer title="寄送方式">
         <div
           onClick={setOptionHandler}
-          className={styles.delivery__selector_box}
+          className={`${styles.delivery__selector_box} ${
+            isOptionOpen && styles.delivery__options_shown
+          } `}
         >
           {props.error && (
             <span className={styles.error_message}>{props.error}</span>
@@ -83,8 +80,30 @@ function Delivery(props) {
         </div>
 
         <div className={`${styles.delivery__options}`}>{options}</div>
-      </div>
-    </div>
+      </OutlineContainer>
+      {/* <div
+        className={`${styles.delivery__container} ${
+          isOptionOpen && styles.delivery__options_shown
+        }  `}
+      >
+        <div>
+          <div className={styles.delivery__heading}>寄送方式</div>
+
+          <div
+            onClick={setOptionHandler}
+            className={styles.delivery__selector_box}
+          >
+            {props.error && (
+              <span className={styles.error_message}>{props.error}</span>
+            )}
+            <div className={styles.delivery__arrow}></div>
+            {selectedDelivery}
+          </div>
+
+          <div className={`${styles.delivery__options}`}>{options}</div>
+        </div>
+      </div> */}
+    </>
   );
 }
 

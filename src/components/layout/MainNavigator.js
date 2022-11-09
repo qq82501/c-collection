@@ -85,7 +85,6 @@ function MainNavigator() {
                 <NavButton>
                   <ion-icon name="heart-outline"></ion-icon>
                 </NavButton>
-                {console.log(favItems)}
                 {favItems.length ? (
                   <div className={styles.icon_quantity}>
                     <span>{favItems.length}</span>

@@ -35,7 +35,9 @@ function LoginModal(props) {
       <p className={styles.go_to_register}>
         <span>尚未加入會員?</span>
         <span>
-          <Link className={`link ${styles.link__register}`}>註冊</Link>
+          <Link to="/register" className={`link ${styles.link__register}`}>
+            註冊
+          </Link>
         </span>
       </p>
       <button

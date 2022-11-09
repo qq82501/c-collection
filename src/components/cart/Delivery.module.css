@@ -41,7 +41,7 @@
 .delivery__options {
   display: none;
 }
-.delivery__options_shown .delivery__options {
+.delivery__options_shown ~ .delivery__options {
   display: block;
 }
 

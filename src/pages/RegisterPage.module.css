@@ -1,0 +1,73 @@
+.register__container {
+  padding: 10rem 4rem 6rem 4rem;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2.2rem;
+}
+
+.flex_row {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.register__form input {
+  border: 1px solid #000;
+}
+
+input[id="address"] {
+  height: 5rem;
+  font-size: 2.2rem;
+  padding: 0 1rem;
+  width: 80%;
+}
+
+.btn__plus {
+  padding: 0.5rem;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+}
+.btn__plus:hover {
+  background-color: #3d3d3d;
+}
+
+.icon__plus {
+  width: 2rem;
+  color: #fff;
+  stroke-width: 3px;
+}
+
+.CreditCard__box {
+  border: 2px solid rgb(138, 138, 138);
+  width: fit-content;
+  padding: 5rem 8rem 4rem 8rem;
+  position: relative;
+}
+
+.credit_card__btn__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+
+.btn__submit {
+  margin-top: 5rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  width: fit-content;
+  padding: 1rem 2rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.btn__submit:hover {
+  background-color: #3d3d3d;
+}

@@ -4,6 +4,7 @@ export function login(formData) {
   return async function loginThunk(dispatch, getState) {
     const validation = async function () {
       const members = await getMembers();
+
       const loginData = {
         account: formData.get("account"),
         password: formData.get("password"),

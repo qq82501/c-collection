@@ -31,10 +31,11 @@ const reducer = function (state = initialState, action) {
     case "SET_DELIVERY": {
       return { ...state, selectedDelivery: action.payload };
     }
-    case "CREATE_ORDER": {
-      const orders = state.loginUser.order ? [...state.loginUser.order] : [];
-      orders.push(action.payload.orderNo);
-      return initialState;
+    case "SUBMIT_ORDER": {
+      return {
+        ...state,
+        loginUser: { ...state.loginUser, order: action.payload, cartItem: [] },
+      };
     }
     case "LOGIN": {
       const user = action.payload;

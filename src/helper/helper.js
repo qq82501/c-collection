@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 const categories = [
   {
     title: "耳環",
@@ -78,8 +80,19 @@ export const getMembers = async function () {
   const res = await fetch(
     "https://c-collection-default-rtdb.firebaseio.com/members.json"
   );
-  const members = await res.json();
+  const membersObject = await res.json();
+  const members = [];
+
+  for (const key in membersObject) {
+    members.push(membersObject[key]);
+  }
   return members;
+};
+
+export const getMember = async function (account) {
+  const members = await getMembers();
+  const member = members.find((member) => member.account === account);
+  return member;
 };
 
 export const updateMember = async function (userData) {
@@ -96,6 +109,36 @@ export const updateMember = async function (userData) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(allMembers),
   });
+};
+
+export const addNewMember = async function ({ request }) {
+  const formData = await request.formData();
+  const member = {
+    account: formData.get("email"),
+    password: formData.get("password"),
+    lastName: formData.get("lastName"),
+    firstName: formData.get("firstName"),
+    contact: formData.get("phone"),
+    birthday: formData.get("birthday"),
+    address: formData.get("address"),
+    creditCard: {
+      cardNumber: formData.get("cardNumber"),
+      expiry: formData.get("expire"),
+      csv: formData.get("csv"),
+    },
+  };
+
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/members.json",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(member),
+    }
+  );
+  return redirect("/");
 };
 
 export const getDelivery = async function () {
