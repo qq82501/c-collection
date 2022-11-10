@@ -25,11 +25,12 @@ function NavLogin(props) {
     <li key={item}>
       <Link
         className="link"
+        onClick={props.onCloseNavLogin}
         to={
-          item === "會員資料"
-            ? loginUser
+          loginUser
+            ? item === "會員資料"
               ? `/memberProfile/${loginUser.account}`
-              : ""
+              : `/orderList/${loginUser.account}`
             : ""
         }
       >

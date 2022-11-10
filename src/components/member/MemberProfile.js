@@ -30,20 +30,23 @@ function MemberProfile(props) {
         value={member.address || "未提供"}
       />
       <Input readOnly={true} labelTitle="生日 : " value={member.birthday} />
-      {!member.creditCard.cardNumber && (
+      {!member.creditCard?.cardNumber && (
         <Input readOnly={true} labelTitle="信用卡 : " value={"未提供"} />
       )}
-
-      <Input
-        readOnly={true}
-        labelTitle="信用卡號 : "
-        value={member.creditCard.cardNumber}
-      />
-      <Input
-        readOnly={true}
-        labelTitle="卡片有效期限 : "
-        value={member.creditCard.expiry}
-      />
+      {member.creditCard?.cardNumber && (
+        <>
+          <Input
+            readOnly={true}
+            labelTitle="信用卡號 : "
+            value={member.creditCard?.cardNumber}
+          />
+          <Input
+            readOnly={true}
+            labelTitle="卡片有效期限 : "
+            value={member.creditCard.expiry}
+          />
+        </>
+      )}
     </div>
   );
 }

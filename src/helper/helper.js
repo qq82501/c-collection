@@ -101,14 +101,22 @@ export const updateMember = async function (userData) {
     (member) => member.account === userData.account
   );
   if (existedUserIndex > -1) {
-    allMembers[existedUserIndex] = userData;
+    allMembers[existedUserIndex] = {
+      ...allMembers[existedUserIndex],
+      ...userData,
+    };
   }
 
-  await fetch("https://c-collection-default-rtdb.firebaseio.com/members.json", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(allMembers),
-  });
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/members.json",
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(allMembers),
+    }
+  );
+
+  return res;
 };
 
 export const addNewMember = async function ({ request }) {
@@ -144,4 +152,36 @@ export const getDelivery = async function () {
   );
   const delivery = await res.json();
   return delivery;
+};
+
+export const getAllOrders = async function () {
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/order.json"
+  );
+  const ordersObject = await res.json();
+  const orders = [];
+  for (const key in ordersObject) {
+    orders.push(ordersObject[key]);
+  }
+  return orders;
+};
+
+export const getMemberOrders = async function (account) {
+  const member = await getMember(account);
+  const memberOrderArr = member?.order ? [...member.order] : [];
+  const orders = await getAllOrders();
+
+  const orderDetailArr = memberOrderArr.reduce((acc, orderNo) => {
+    const foundOrder = orders.find((order) => order.orderNo === orderNo);
+    acc.push(foundOrder);
+    return acc;
+  }, []);
+
+  return orderDetailArr;
+};
+
+export const getOrderDetail = async function (orderNo) {
+  const orders = await getAllOrders();
+  const order = orders.find((item) => item.orderNo === orderNo);
+  return order;
 };

@@ -50,6 +50,12 @@ const reducer = function (state = initialState, action) {
       localStorage.removeItem("loginUser");
       return { ...state, loginUser: null };
     }
+
+    case "UPDATE_PROFILE": {
+      console.log("updating", action.payload);
+
+      return { ...state, loginUser: { ...state.loginUser, ...action.payload } };
+    }
     case "TEST":
       console.log("redux test");
       return state;

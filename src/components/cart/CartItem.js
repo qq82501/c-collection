@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./CartItem.module.css";
 import Input from "../UI/Input";
 import updateFav from "../../thunk/updateFavThunkAction";
@@ -36,11 +37,13 @@ function CartItem(props) {
   return (
     <div className={styles.cart_item__container}>
       {isLoading && <Modal overlap={<div>loading</div>} />}
-      <img
-        className={styles.cart_item__img}
-        alt="product"
-        src={require(`../../images/products/${props.product.productNo}/01.jpg`)}
-      />
+      <Link to={`/productDetail/${props.product.productNo}`}>
+        <img
+          className={styles.cart_item__img}
+          alt="product"
+          src={require(`../../images/products/${props.product.productNo}/01.jpg`)}
+        />
+      </Link>
       <div className={styles.cart_item__info_box}>
         <div>
           <Input

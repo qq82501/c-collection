@@ -11,6 +11,8 @@ import {
   getDelivery,
   addNewMember,
   getMember,
+  getMemberOrders,
+  getOrderDetail,
 } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import Page2 from "./pages/Page2";
@@ -19,8 +21,12 @@ import MyCartPage from "./pages/MyCartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import initialStateThunk from "./thunk/initiateStateThunkAction";
 import RegisterPage from "./pages/RegisterPage";
-import MemberProfilePage from "./pages/MemberProfilePage";
+import MemberProfilePage, {
+  updateMemberFromProfile,
+} from "./pages/MemberProfilePage";
 import MemberEdit from "./components/member/MemberEdit";
+import OrderListPage from "./pages/OrderListPage";
+import OrderDetailPage from "./pages/OrderDetailPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +38,7 @@ function App() {
     {
       path: "/",
       element: <Layout />,
+
       children: [
         { index: true, element: <WelcomePage /> },
         {
@@ -52,6 +59,7 @@ function App() {
           path: "productDetail/:productNo",
           element: <ProductDetailPage />,
           loader: ({ params }) => {
+            console.log("p loader");
             return getProductDetail(params.productNo);
           },
         },
@@ -78,12 +86,31 @@ function App() {
           loader: ({ params }) => {
             return getMember(params.account);
           },
+          action: updateMemberFromProfile,
+
           children: [
             {
               path: "edit",
               element: <MemberEdit />,
+              loader: ({ params }) => {
+                return getMember(params.account);
+              },
             },
           ],
+        },
+        {
+          path: "orderList/:account",
+          element: <OrderListPage />,
+          loader: ({ params }) => {
+            return getMemberOrders(params.account);
+          },
+        },
+        {
+          path: "orderList/:account/:orderNo",
+          element: <OrderDetailPage />,
+          loader: ({ params }) => {
+            return getOrderDetail(params.orderNo);
+          },
         },
       ],
     },

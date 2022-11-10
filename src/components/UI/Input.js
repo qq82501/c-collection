@@ -18,7 +18,7 @@ function Input(props) {
         size={
           props.labelTitle.includes("額")
             ? 2
-            : props.value.length > 6
+            : props.value.length > 4
             ? props.value.length * 1.5
             : props.value.length
         }

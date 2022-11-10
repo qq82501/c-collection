@@ -11,13 +11,18 @@ function CheckoutPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
-  const cartItems = useSelector((state) => state.localCart);
   const loginUser = useSelector((state) => state.loginUser);
-  console.log(loginUser);
+  const cartItems = loginUser.cartItem;
+  console.log(cartItems);
 
   const submitOrderHandler = async function (e) {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const totalPrice =
+      cartItems.reduce((acc, item) => {
+        acc += item.price * item.quantity;
+        return acc;
+      }, 0) + selectedDelivery.cost;
     const order = {
       orderUser: {
         lastName: loginUser.lastName,
@@ -26,6 +31,7 @@ function CheckoutPage() {
         email: loginUser.account,
       },
       orderNo: `${loginUser.account.slice(0, 2)}${Date.now()}`,
+      totalPrice,
       orderDate: `${new Date()}`,
       delivery: {
         deliveryBy: selectedDelivery.title,
@@ -33,6 +39,12 @@ function CheckoutPage() {
       },
       payment: {
         payBy: formData.get("payment"),
+        paymentStatus:
+          formData.get("payment") === "信用卡扣款"
+            ? "已完成"
+            : formData.get("payment") === "貨到付款"
+            ? "未完成"
+            : "已完成",
       },
       product: cartItems,
     };

@@ -1,0 +1,10 @@
+.order_info__box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order_info__box label,
+.order_info__box input {
+  font-size: 2rem;
+}

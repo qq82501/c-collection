@@ -39,7 +39,7 @@ function RegisterPage() {
             />
             <InputWithPlaceHolder
               placeholder="*確認密碼"
-              type="confirmPassword"
+              type="password"
               id="confirmPassword"
             />
           </div>

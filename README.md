@@ -15,6 +15,8 @@ a jewelry e-commerce website for side-project.
 9. Member profile browsing and data management.
 10. Register page
 11. Order submit and store in DB.
+12. Order list page.
+13. Order detail page
 
 ## Tools:
 

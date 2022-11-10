@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import styles from "./CreditCard.module.css";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 
-function CreditCard() {
+function CreditCard(props) {
   const loginUser = useSelector((state) => state.loginUser);
+  console.log(loginUser);
   const [inputCreditCard, setInputCreditCard] = useState(null);
 
   const setInputCreditCardHandler = function (e) {
@@ -26,21 +27,23 @@ function CreditCard() {
       <InputWithPlaceHolder
         placeholder="*信用卡卡號"
         type="text"
-        defaultValue={loginUser ? loginUser.creditCard.cardNumber : null}
+        defaultValue={
+          loginUser ? loginUser.creditCard?.cardNumber || null : null
+        }
         value={inputCreditCard}
         onChange={setInputCreditCardHandler}
         id="cardNumber"
       />
       <InputWithPlaceHolder
         type="text"
-        defaultValue={loginUser ? loginUser.creditCard.expiry : null}
+        defaultValue={loginUser ? loginUser.creditCard?.expiry || null : null}
         placeholder="*卡片有效期限"
         id="expire"
       />
       <InputWithPlaceHolder
         placeholder="*安全碼(CSV)"
         id="csv"
-        defaultValue={loginUser ? loginUser.creditCard.csv : null}
+        defaultValue={loginUser ? loginUser.creditCard?.csv || null : null}
       />
     </div>
   );

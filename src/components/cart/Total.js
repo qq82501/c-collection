@@ -3,7 +3,12 @@ import styles from "./Total.module.css";
 
 function Total(props) {
   const { localCart, loginUser } = useSelector((state) => state);
-  const cartItems = loginUser ? loginUser?.cartItem || [] : localCart;
+  const { order } = props;
+  const cartItems = order
+    ? order.product
+    : loginUser
+    ? loginUser?.cartItem || []
+    : localCart;
 
   const productSum = cartItems.reduce((acc, item) => {
     return (acc += item.price * item.quantity);
@@ -18,13 +23,13 @@ function Total(props) {
       <div className={styles.flex_between} name="delivery_fee">
         <p>運費</p>
         <p>{`${new Intl.NumberFormat("zh-TW", {}).format(
-          props.deliveryFee
+          order ? order.delivery.deliveryFee : props.deliveryFee
         )} TWD`}</p>
       </div>
       <div className={styles.flex_between} name="total">
         <p>訂單總金額</p>
         <p>{`${new Intl.NumberFormat("zh-TW", {}).format(
-          productSum + props.deliveryFee
+          order ? order.totalPrice : productSum + props.deliveryFee
         )} TWD`}</p>
       </div>
     </div>
