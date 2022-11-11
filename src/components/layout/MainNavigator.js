@@ -1,15 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./MainNavigator.module.css";
 import NavButton from "../UI/NavButton";
 import Category from "../products/Category";
 import NavLogin from "../login/NavLogin";
+import SearchBar from "../search/SearchBar";
 
 function MainNavigator() {
+  const refSearch = useRef();
+  const navigate = useNavigate();
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isNavLoginOpen, setIsNavLoginOpen] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+  const [navLoginError, setNavLoginError] = useState(null);
   const localFavItems = useSelector((state) => state.localFavorite);
   const localCartItems = useSelector((state) => state.localCart);
   const loginUser = useSelector((state) => state.loginUser);
@@ -37,14 +42,37 @@ function MainNavigator() {
     setIsNavLoginOpen(false);
   };
 
+  const openSearchBarHandler = function () {
+    setIsSearchBarOpen(true);
+  };
+
   useEffect(() => {
-    document.body.addEventListener("click", (e) => {
-      if (!isNavLoginOpen) return;
-      if (e.target.closest(".nav_icon__login")) return;
-      if (!e.target.closest(".nav_login") && isNavLoginOpen)
-        closeNavLoginHandler();
+    document.body.addEventListener("keydown", (e) => {
+      const query = refSearch.current?.value.trim();
+      if (!query || !query.length) return;
+      if (e.key === "Enter") {
+        navigate(`/searchResult?name=${query}`);
+        refSearch.current.value = "";
+      }
     });
-  }, [isNavLoginOpen]);
+    document.body.addEventListener("click", (e) => {
+      if (!isNavLoginOpen && !isSearchBarOpen) return;
+
+      if (
+        e.target.closest(".nav_icon__login") ||
+        e.target.closest(".nav_icon__search")
+      )
+        return;
+
+      if (!e.target.closest(".nav_login") && isNavLoginOpen) {
+        setNavLoginError(null);
+        closeNavLoginHandler();
+      }
+      if (isSearchBarOpen) {
+        setIsSearchBarOpen(false);
+      }
+    });
+  }, [isNavLoginOpen, isSearchBarOpen, refSearch, navigate]);
 
   const loginButton = loginUser ? (
     <NavButton onClick={openNavLoginHandler}>
@@ -75,10 +103,15 @@ function MainNavigator() {
           </ul>
 
           <ul className={styles["nav-icons"]}>
-            <li>
-              <NavButton>
+            <li className="nav_icon__search">
+              <NavButton onClick={openSearchBarHandler}>
                 <ion-icon name="search-outline"></ion-icon>
               </NavButton>
+              <SearchBar
+                isSearchBarOpen={isSearchBarOpen}
+                placeholder="尋找商品..."
+                ref={refSearch}
+              />
             </li>
             <li className={styles.nav_icon__fav}>
               <Link to="/myWishList">
@@ -114,7 +147,11 @@ function MainNavigator() {
       </header>
       <Category onMouseLeave={closeCategoryHandler} />
       <div className={`${styles.main_nav__nav_login_box} nav_login `}>
-        <NavLogin onCloseNavLogin={closeNavLoginHandler} />
+        <NavLogin
+          onCloseNavLogin={closeNavLoginHandler}
+          navLoginError={navLoginError}
+          onSetNavLoginError={setNavLoginError}
+        />
       </div>
     </>
   );

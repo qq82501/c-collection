@@ -7,6 +7,7 @@ import styles from "./ProductDetailPage.module.css";
 function ProductDetailPage() {
   const product = useLoaderData();
   const path = [...product.category, product.title];
+
   return (
     <div className={`nav-bar__height`}>
       <Breadcrumb categoryPath={path} />

@@ -1,10 +1,18 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import OutlineContainer from "../components/UI/OutlineContainer";
 import styles from "./OrderListPage.module.css";
 
 function OrderListPage() {
+  const navigate = useNavigate();
   const order = useLoaderData();
-  console.log(order);
+  const loginUser = useSelector((state) => state.loginUser);
+  const isLogin = Boolean(loginUser);
+
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, [isLogin, navigate]);
 
   const orderListContent = order.map((item) => (
     <li className={styles.order_list__row}>

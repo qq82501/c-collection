@@ -1,7 +1,6 @@
 import { updateMember } from "../helper/helper";
 
 export function submitOrder(order) {
-  console.log(order);
   return async function submitOrdertThunk(dispatch, getState) {
     const { loginUser } = getState();
     const userOrderList = loginUser?.order ? [...loginUser.order] : [];

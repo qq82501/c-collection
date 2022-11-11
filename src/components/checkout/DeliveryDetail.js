@@ -1,13 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./DeliveryDetail.module.css";
 import HomeDelivery from "./HomeDelivery";
 import StoreDelivery from "./StoreDelivery";
 import InputRadio from "../UI/InputRadio";
 import CreditCard from "./CreditCard";
+import CheckoutAuthContext from "../../context/checkout-auth-context";
 
 function DeliveryDetail() {
+  const context = useContext(CheckoutAuthContext);
+  const { paymentError } = context;
+
   const dispatch = useDispatch();
   const location = useLocation();
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
@@ -63,7 +67,8 @@ function DeliveryDetail() {
       <div className={styles.tabs__box}>{tabs}</div>
       <div className={styles.tab__detail_box}>
         <div>{tabDetail}</div>
-        <div className={styles.payment_box}>
+        <div className={`${styles.payment_box} ${paymentError && "error_box"}`}>
+          {paymentError && <p className="error_message">{paymentError}</p>}
           <InputRadio
             labelTitle="付款方式 :"
             options={selectedDelivery.payment}

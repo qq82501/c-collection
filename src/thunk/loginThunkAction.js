@@ -90,10 +90,10 @@ export function login(formData) {
         return isValid;
       }
       if (!isValid) {
-        throw new Error("incorrect account or password");
+        throw new Error("帳號或密碼錯誤，請重新輸入");
       }
     } catch (e) {
-      console.error(e.message);
+      throw e;
     }
   };
 }

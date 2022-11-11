@@ -33,8 +33,13 @@
   gap: 4rem;
 }
 
+.nav-links li {
+  cursor: pointer;
+}
+
 .nav-icons {
-  /* z-index: 100; */
+  position: relative;
+  background-color: #fff;
 }
 
 .nav-icons button {

@@ -27,6 +27,7 @@ import MemberProfilePage, {
 import MemberEdit from "./components/member/MemberEdit";
 import OrderListPage from "./pages/OrderListPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
+import SearchResultPage from "./pages/SearchResultPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -111,6 +112,10 @@ function App() {
           loader: ({ params }) => {
             return getOrderDetail(params.orderNo);
           },
+        },
+        {
+          path: "searchResult",
+          element: <SearchResultPage />,
         },
       ],
     },

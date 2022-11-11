@@ -1,4 +1,6 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import OrderDetail from "../components/checkout/OrderDetail";
 import OrderInfo from "../components/member/OrderInfo";
@@ -6,8 +8,15 @@ import Total from "../components/cart/Total";
 import styles from "./OrderDetailPage.module.css";
 
 function OrderDetailPage() {
+  const navigate = useNavigate();
   const order = useLoaderData();
   const param = useParams();
+  const loginUser = useSelector((state) => state.loginUser);
+  const isLogin = Boolean(loginUser);
+
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, [isLogin, navigate]);
 
   return (
     <div

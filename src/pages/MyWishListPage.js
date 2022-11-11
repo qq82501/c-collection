@@ -7,7 +7,6 @@ function MyWishListPage() {
   const loginUser = useSelector((state) => state.loginUser);
   const localFavItems = useSelector((state) => state.localFavorite);
   const favItems = loginUser ? loginUser?.favItem || [] : localFavItems;
-
   const [clickedProduct, setClickedProduct] = useState("");
 
   const openSpecListHandler = function (productNo) {

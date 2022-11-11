@@ -19,7 +19,6 @@ function MyCartPage() {
 
   const [isCheckOutClicked, setIsCheckOutClicked] = useState(false);
   const [error, setError] = useState(null);
-  console.log(1111, Boolean(cartItems.length));
 
   const checkOutHandler = function () {
     if (!selectedDelivery) {

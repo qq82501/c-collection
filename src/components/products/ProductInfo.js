@@ -7,6 +7,7 @@ import BtnAddCart from "../UI/BtnAddCart";
 import useUpdateCart from "../../hook/useUpdaeCart";
 import InputRadio from "../UI/InputRadio";
 import Modal from "../UI/Modal";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 function ProductInfo(props) {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ function ProductInfo(props) {
 
   return (
     <div className={styles.product_info__container}>
-      {isLoading && <Modal overlap={<div>loading</div>} />}
+      {isLoading && <Modal overlap={<LoadingSpinner transparent={true} />} />}
       <div className={styles.product_info__text_box}>
         <p className={styles.product_info_title}>{product.title}</p>
         <button

@@ -51,6 +51,16 @@ ul {
   margin: 0 auto;
 }
 
+.error_message {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: red;
+}
+
+.error_box {
+  border: 2px solid red !important;
+}
+
 .favorite {
   font-size: 3.6rem;
   color: rgb(48, 48, 48);

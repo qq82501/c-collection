@@ -6,6 +6,7 @@ import SpecSelector from "./SpecSelector";
 import updateFav from "../../thunk/updateFavThunkAction";
 import useUpdateCart from "../../hook/useUpdaeCart";
 import Modal from "../UI/Modal";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 function FavItem(props) {
   const { updateCartThunk, isLoading } = useUpdateCart();
@@ -30,7 +31,7 @@ function FavItem(props) {
   return (
     <>
       <div className={`${styles.product_item__container} ${props.className}`}>
-        {isLoading && <Modal overlap={<div>Loading</div>} />}
+        {isLoading && <Modal overlap={<LoadingSpinner transparent={true} />} />}
         <div className={styles.product_item__img_box}>
           <Link to={`/productDetail/${productNo}`} className="link">
             <img

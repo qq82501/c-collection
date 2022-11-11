@@ -1,10 +1,14 @@
 import styles from "./StoreDelivery.module.css";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Input from "../UI/Input";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
+import CheckoutAuthContext from "../../context/checkout-auth-context";
 
 function StoreDelivery() {
+  const context = useContext(CheckoutAuthContext);
+  const { storeError } = context;
+
   const { selectedDelivery, loginUser } = useSelector((state) => state);
   const [stores, setStores] = useState([]);
   const [selected, setSelected] = useState({ city: "", dist: "", road: "" });
@@ -87,7 +91,12 @@ function StoreDelivery() {
           defaultValue={loginUser.firstName}
         />
       </div>
-      <div className={styles.store_delivery__selector_box}>
+      <div
+        className={`${styles.store_delivery__selector_box} ${
+          storeError && "error_box"
+        }`}
+      >
+        {storeError && <p className="error_message"> {storeError}</p>}
         <Input
           id="city"
           labelTitle="縣市 : "

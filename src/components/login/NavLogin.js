@@ -1,12 +1,25 @@
+import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./NavLogin.module.css";
 import ImputWithPlaceholder from "../UI/InputWithPlaceholder";
 import { login } from "../../thunk/loginThunkAction";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 function NavLogin(props) {
+  const refForm = useRef();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const loginUser = useSelector((state) => state.loginUser);
+  const { navLoginError } = props;
+
+  useEffect(() => {
+    if (!navLoginError) {
+      if (!refForm.current) return;
+      const inputEls = refForm.current.querySelectorAll("input");
+      inputEls.forEach((input) => (input.value = ""));
+    }
+  }, [navLoginError]);
 
   const logoutHandler = function () {
     dispatch({ type: "LOGOUT" });
@@ -15,9 +28,16 @@ function NavLogin(props) {
 
   const loginHandler = async function (e) {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.target);
-    const isValid = await dispatch(login(formData));
-    if (isValid) props.onCloseNavLogin();
+    try {
+      const isValid = await dispatch(login(formData));
+      if (isValid) props.onCloseNavLogin();
+    } catch (error) {
+      props.onSetNavLoginError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const memberService = ["會員資料", "訂單資料"];
@@ -48,7 +68,12 @@ function NavLogin(props) {
       </button>
     </div>
   ) : (
-    <form className={styles.nav_login__form} onSubmit={loginHandler}>
+    <form
+      className={styles.nav_login__form}
+      onSubmit={loginHandler}
+      ref={refForm}
+    >
+      {navLoginError && <p className="error_message">{navLoginError}</p>}
       <ImputWithPlaceholder placeholder="帳號" id="account" />
       <ImputWithPlaceholder placeholder="密碼" id="password" type="password" />
       <button type="submit" className="btn__login">
@@ -65,6 +90,11 @@ function NavLogin(props) {
     </form>
   );
 
-  return <div className={styles.nav_login__container}>{navLoginContent}</div>;
+  return (
+    <div className={styles.nav_login__container}>
+      {isLoading && <LoadingSpinner />}
+      {navLoginContent}
+    </div>
+  );
 }
 export default NavLogin;

@@ -1,0 +1,23 @@
+.search_bar__container {
+  position: absolute;
+  top: -7%;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.search_bar__active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateX(-110%);
+}
+
+.search_bar__container input {
+  font-size: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 40px;
+  border: 1px solid #bfbfbf;
+}
