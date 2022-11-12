@@ -17,20 +17,23 @@ function useCheckCreditCard() {
 
   const setInputCreditCardHandler = function (e) {
     const regex = /[^0-9]/g;
-    const inputValue = e.target.value.replaceAll(regex, "");
-
-    const creditCard = [...inputValue].filter(
-      (num) => num !== " " && num !== regex
-    );
-    if (creditCard.length > 16) return;
-    const NumOfGroup = creditCard.length / 4;
-
-    for (let i = 0; i < NumOfGroup; i++) {
-      if (i === 0) continue;
-      creditCard.splice(i * 4 + (i - 1), 0, " "); // add a space in every 4 digit
+    const inputValue = e.target.value.replaceAll(" ", "").replaceAll(regex, "");
+    let group = [];
+    const formatArr = [];
+    for (let i = 0; i < inputValue.length; i++) {
+      if (i === 4 || i === 8 || i === 12) {
+        formatArr.push(group.join(""));
+        group = [];
+        group.push(inputValue[i]);
+      } else {
+        group.push(inputValue[i]);
+      }
     }
-    const splitCardNum = creditCard.join("");
-    setInputCreditCard(splitCardNum);
+    formatArr.push(group.join(""));
+    const formatValue = formatArr.join(" ");
+    if (inputValue.length > 16)
+      return setInputCreditCard(formatValue.slice(0, 19));
+    setInputCreditCard(formatValue);
   };
 
   const checkExpiryHandler = function () {
@@ -41,11 +44,25 @@ function useCheckCreditCard() {
 
   const setInputExpiryHandler = function (e) {
     const regex = /[^0-9]/g;
-    const inputValue = [...e.target.value.replaceAll(regex, "")];
-    if (inputValue.length > 4) return;
-    if (inputValue.length > 2) inputValue.splice(2, 0, " / ");
-    const formatedValue = inputValue.join("");
-    setInputExpiry(formatedValue);
+    const inputValue = e.target.value
+      .replaceAll(" / ", "")
+      .replaceAll(regex, "");
+    let group = [];
+    const formatArr = [];
+    for (let i = 0; i < inputValue.length; i++) {
+      if (i === 2) {
+        formatArr.push(group.join(""));
+        group = [];
+        group.push(inputValue[i]);
+      } else {
+        group.push(inputValue[i]);
+      }
+    }
+    formatArr.push(group.join(""));
+    const formatValue = formatArr.join(" / ");
+    if (inputValue.length > 4) return setInputExpiry(formatValue.slice(0, 7));
+
+    setInputExpiry(formatValue);
   };
 
   const checkCsvHandler = function () {
