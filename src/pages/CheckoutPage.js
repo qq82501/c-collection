@@ -7,7 +7,6 @@ import DeliveryDetail from "../components/checkout/DeliveryDetail";
 import OrderDetail from "../components/checkout/OrderDetail";
 import Total from "../components/cart/Total";
 import useSubmitOrder from "../hook/useSubmitOrder";
-// import { submitOrder } from "../thunk/submitOrderThunkAction";
 import CheckoutAuthContext from "../context/checkout-auth-context";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 
@@ -80,6 +79,13 @@ function CheckoutPage() {
       }
 
       if (formData.get("payment") === "信用卡扣款") {
+        if (
+          formData.get("cardNumber").length < 19 ||
+          formData.get("expire").length < 7 ||
+          formData.get("csv").length < 3
+        )
+          return;
+
         order.payment.paymentStatus = "已完成";
         order.payment.credit = {
           creditNo: formData.get("cardNumber"),

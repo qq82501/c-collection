@@ -1,5 +1,3 @@
-import { redirect } from "react-router-dom";
-
 const categories = [
   {
     title: "耳環",
@@ -119,11 +117,16 @@ export const updateMember = async function (userData) {
   return res;
 };
 
-export const addNewMember = async function ({ request }) {
-  const formData = await request.formData();
+export const addNewMember = async function (rawForm) {
+  const formData = new FormData(rawForm);
+
+  if (formData.get("registerPassword") !== formData.get("confirmPassword")) {
+    return;
+  }
+
   const member = {
     account: formData.get("email"),
-    password: formData.get("password"),
+    password: formData.get("registerPassword"),
     lastName: formData.get("lastName"),
     firstName: formData.get("firstName"),
     contact: formData.get("phone"),
@@ -143,7 +146,6 @@ export const addNewMember = async function ({ request }) {
     },
     body: JSON.stringify(member),
   });
-  return redirect("/");
 };
 
 export const getDelivery = async function () {

@@ -5,6 +5,7 @@
 .order_list__grid_box {
   display: grid;
   grid-template-columns: 60fr 40fr;
+  grid-template-rows: auto 1fr;
   padding-top: 4rem;
   gap: 4rem;
 }

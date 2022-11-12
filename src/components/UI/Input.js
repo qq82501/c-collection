@@ -18,6 +18,8 @@ function Input(props) {
         size={
           props.labelTitle.includes("額")
             ? 2
+            : props.labelTitle.includes("信用卡號")
+            ? 15
             : props.value.length > 4
             ? props.value.length * 1.5
             : props.value.length

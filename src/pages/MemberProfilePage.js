@@ -14,6 +14,7 @@ function MemberProfilePage() {
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   const isLogin = Boolean(loginUser);
+  console.log("actionStatus", actionStatus);
 
   useEffect(() => {
     if (!isLogin) {
@@ -45,6 +46,7 @@ export default MemberProfilePage;
 
 export async function updateMemberFromProfile({ request, params }) {
   const formData = await request.formData();
+
   const editProfile = {
     account: params.account,
     lastName: formData.get("lastName"),

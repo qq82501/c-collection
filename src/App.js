@@ -9,7 +9,6 @@ import {
   getProductsData,
   getProductDetail,
   getDelivery,
-  addNewMember,
   getMember,
   getMemberOrders,
   getOrderDetail,
@@ -79,7 +78,11 @@ function App() {
         },
         {
           path: "register",
-          element: <RegisterPage />,
+          element: (
+            <RegisterPage
+            //  isLoading={isAddingNewMember}
+            />
+          ),
         },
         {
           path: "memberProfile/:account",
@@ -118,10 +121,6 @@ function App() {
           element: <SearchResultPage />,
         },
       ],
-    },
-    {
-      path: "/addNewMember",
-      action: addNewMember,
     },
   ]);
 

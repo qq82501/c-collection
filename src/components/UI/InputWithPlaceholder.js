@@ -1,9 +1,12 @@
+import React from "react";
 import styles from "./InputWithPlaceholder.module.css";
 
-function InputWithPlaceHolder(props) {
+const InputWithPlaceHolder = React.forwardRef((props, ref) => {
   return (
     <div className={styles.input_box}>
       <input
+        minlength={props.minlength}
+        ref={ref}
         className={styles.input}
         id={props.id}
         name={props.id}
@@ -11,6 +14,7 @@ function InputWithPlaceHolder(props) {
         defaultValue={props.defaultValue}
         value={props.value}
         onChange={props.onChange}
+        onBlur={props.onBlur}
         required
       />
       <label htmlFor={props.id} className={styles.placeholder}>
@@ -18,6 +22,6 @@ function InputWithPlaceHolder(props) {
       </label>
     </div>
   );
-}
+});
 
 export default InputWithPlaceHolder;
