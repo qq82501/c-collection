@@ -18,7 +18,7 @@ function SearchResultPage() {
   }, [products, query]);
 
   return (
-    <div className={`nav-bar__height__outline_container`}>
+    <div className={styles.search_result__container}>
       <div className={styles.search_result__title_bar}>
         <span>{`搜尋 "${query}" 結果`}</span>
       </div>

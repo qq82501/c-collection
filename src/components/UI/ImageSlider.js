@@ -62,6 +62,7 @@ function ImageSlider() {
   const sliderImage = images.map((img, i) => {
     return (
       <div
+        className={styles.img_box}
         key={img.imageNo}
         index={i}
         onMouseEnter={stopSliderHandler}

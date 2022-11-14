@@ -1,14 +1,19 @@
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import MainNavigator from "./MainNavigator";
 import styles from "./Layout.module.css";
+import MobileHeaderBar from "./MobileHeaderBar";
+import MobileFooterBar from "./MobileFooterBar";
 
 function Layout() {
+  const { deviceMode } = useSelector((state) => state);
   return (
     <div className={styles.layout}>
-      <MainNavigator />
-      <main>
+      {deviceMode === "pc" ? <MainNavigator /> : <MobileHeaderBar />}
+      <main className={styles.main__container}>
         <Outlet />
       </main>
+      {deviceMode === "mobile" && <MobileFooterBar />}
     </div>
   );
 }

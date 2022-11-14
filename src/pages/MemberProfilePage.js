@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OutlineContainer from "../components/UI/OutlineContainer";
 import MemberProfile from "../components/member/MemberProfile";
 import { updateMember } from "../helper/helper";
-// import styles from "./MemberProfilePage.module.css";
+import styles from "./MemberProfilePage.module.css";
 
 function MemberProfilePage() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function MemberProfilePage() {
   }, [actionStatus, dispatch, isLogin, navigate]);
 
   return (
-    <div className="nav-bar__height__outline_container ">
+    <div className={styles.member_profile__container}>
       <OutlineContainer title="會員資料">
         {!isEditorOpen && <MemberProfile onSetEditor={setIsEditorOpen} />}
         {isEditorOpen && <Outlet context={{ onSetEditor: setIsEditorOpen }} />}

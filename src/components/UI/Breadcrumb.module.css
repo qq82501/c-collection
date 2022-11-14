@@ -9,6 +9,7 @@
   font-weight: 500;
   gap: 1rem;
   position: fixed;
+  top: 6rem;
   z-index: 50;
 }
 

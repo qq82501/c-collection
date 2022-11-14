@@ -47,7 +47,7 @@ function MyCartPage() {
   };
   return (
     <>
-      <div className={`nav-bar__height ${styles.my_cart_page__container}`}>
+      <div className={styles.my_cart_page__container}>
         <div className={styles.cartlist_box}>
           <CartList />
         </div>

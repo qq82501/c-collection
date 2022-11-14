@@ -19,9 +19,7 @@ function OrderDetailPage() {
   }, [isLogin, navigate]);
 
   return (
-    <div
-      className={`nav-bar__height__outline_container ${styles.order_detail_page__container}`}
-    >
+    <div className={styles.order_detail_page__container}>
       <div className={styles.order_list__title_bar}>
         <span>{`訂單編號: ${order.orderNo}`}</span>
         <Link

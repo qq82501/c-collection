@@ -12,6 +12,7 @@ import {
   getMember,
   getMemberOrders,
   getOrderDetail,
+  getCategories,
 } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import Page2 from "./pages/Page2";
@@ -27,10 +28,21 @@ import MemberEdit from "./components/member/MemberEdit";
 import OrderListPage from "./pages/OrderListPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import SearchResultPage from "./pages/SearchResultPage";
+import CategoryPage from "./pages/CatogoryPage";
+import MemberPage from "./pages/MemberPage";
+import LoginModal from "./components/login/LoginModal";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    window.addEventListener("resize", (e) => {
+      const width = window.innerWidth;
+      if (width < 900) {
+        dispatch({ type: "SET_DEVICE_MODE", payload: "mobile" });
+      } else {
+        dispatch({ type: "SET_DEVICE_MODE", payload: "pc" });
+      }
+    });
     dispatch(initialStateThunk());
   }, [dispatch]);
 
@@ -38,9 +50,17 @@ function App() {
     {
       path: "/",
       element: <Layout />,
-
       children: [
         { index: true, element: <WelcomePage /> },
+        {
+          path: "productCategory",
+          element: <CategoryPage />,
+          loader: () => {
+            return getCategories();
+          },
+        },
+        { path: "member", element: <MemberPage /> },
+        { path: "login", element: <LoginModal /> },
         {
           path: "product/:category",
           element: <ProductsListPage />,
@@ -80,7 +100,7 @@ function App() {
           path: "register",
           element: (
             <RegisterPage
-            //  isLoading={isAddingNewMember}
+            // isLoading={isAddingNewMember}
             />
           ),
         },

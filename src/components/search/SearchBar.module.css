@@ -1,11 +1,23 @@
 .search_bar__container {
+  top: -7%;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.search_bar__container_mobile {
+  display: flex;
+  padding: 0 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.search_bar__container_pc {
   position: absolute;
   top: -7%;
   left: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.3s;
 }
 
 .search_bar__active {
@@ -16,6 +28,15 @@
 }
 
 .search_bar__container input {
+  font-size: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 40px;
+  border: 1px solid #bfbfbf;
+}
+
+.search_bar__container_mobile input {
+  width: 80%;
+  min-width: 15rem;
   font-size: 2rem;
   padding: 0.5rem 2rem;
   border-radius: 40px;

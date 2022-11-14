@@ -15,9 +15,11 @@ function MainNavigator() {
   const [isNavLoginOpen, setIsNavLoginOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [navLoginError, setNavLoginError] = useState(null);
-  const localFavItems = useSelector((state) => state.localFavorite);
-  const localCartItems = useSelector((state) => state.localCart);
-  const loginUser = useSelector((state) => state.loginUser);
+  const {
+    localFavorite: localFavItems,
+    localCart: localCartItems,
+    loginUser,
+  } = useSelector((state) => state);
 
   const favItems = loginUser ? loginUser?.favItem || [] : localFavItems;
   const cartItems = loginUser ? loginUser?.cartItem || [] : localCartItems;

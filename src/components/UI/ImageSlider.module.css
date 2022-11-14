@@ -7,8 +7,13 @@
 }
 
 .slider_box {
+  width: 100%;
   transition: all 1.5s;
   display: flex;
+}
+
+.img_box {
+  width: 100%;
 }
 
 .slider_selectors_box {

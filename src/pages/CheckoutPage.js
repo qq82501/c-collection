@@ -110,7 +110,7 @@ function CheckoutPage() {
 
   return (
     <form
-      className={`nav-bar__height ${styles.checkout_page__container}`}
+      className={styles.checkout_page__container}
       onSubmit={submitOrderHandler}
     >
       {isLoading && <LoadingSpinner />}

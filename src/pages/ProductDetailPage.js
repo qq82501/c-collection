@@ -9,7 +9,7 @@ function ProductDetailPage() {
   const path = [...product.category, product.title];
 
   return (
-    <div className={`nav-bar__height`}>
+    <div>
       <Breadcrumb categoryPath={path} />
       <main
         className={`${styles.product_detail__main_container} breadcrumb__height`}

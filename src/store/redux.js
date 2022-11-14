@@ -6,6 +6,7 @@ const initialState = {
   products: [],
   loginUser: null,
   selectedDelivery: null,
+  deviceMode: window.innerWidth < 900 ? "mobile" : "pc",
 };
 
 const reducer = function (state = initialState, action) {
@@ -55,6 +56,10 @@ const reducer = function (state = initialState, action) {
       console.log("updating", action.payload);
 
       return { ...state, loginUser: { ...state.loginUser, ...action.payload } };
+    }
+
+    case "SET_DEVICE_MODE": {
+      return { ...state, deviceMode: action.payload };
     }
     case "TEST":
       console.log("redux test");

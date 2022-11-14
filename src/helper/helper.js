@@ -1,18 +1,3 @@
-const categories = [
-  {
-    title: "耳環",
-    to: "/product/耳環",
-    childCat: [
-      { title: "夾式耳環", to: "/product/耳環/夾式耳環" },
-      {
-        title: "穿孔式耳環",
-        to: "/product/耳環/穿孔式耳環",
-      },
-    ],
-  },
-  { title: "戒指", to: "/product/戒指", childCat: [] },
-];
-
 export const wait = function (milisecond) {
   return new Promise(function (resolve, reject) {
     const timer = setInterval(() => {
@@ -21,16 +6,26 @@ export const wait = function (milisecond) {
   });
 };
 
-const getPath = function (selected) {
-  const parentCategory = categories.find((category) =>
-    category.childCat.some((child) => child.title === selected)
-  )?.title;
+export const getCategories = async function () {
+  const res = await fetch(
+    "https://c-collection-default-rtdb.firebaseio.com/category.json"
+  );
+  const categories = await res.json();
+  return categories;
+};
+
+const getPath = async function (selected) {
+  const categories = await getCategories();
+  const parentCategory = categories.find((category) => {
+    if (!category.childCat) return undefined;
+    return category.childCat.some((child) => child.title === selected);
+  })?.title;
   const path = parentCategory ? [parentCategory, selected] : [selected];
   return path;
 };
 
 export const getProductsData = async function (category) {
-  const path = getPath(category);
+  const path = await getPath(category);
   const res = await fetch(
     "https://c-collection-default-rtdb.firebaseio.com/products.json"
   );

@@ -36,7 +36,7 @@ function OrderListPage() {
   ));
 
   return (
-    <div className="nav-bar__height__outline_container">
+    <div className={styles.order_list__container}>
       <OutlineContainer title="訂單列表">
         <ul className={styles.order_list__table}>
           <li className={styles.order_list__head}>

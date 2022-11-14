@@ -1,0 +1,29 @@
+.member_feature__container {
+  display: grid;
+  grid-template-columns: 70fr 30fr;
+  font-size: 3rem;
+  justify-items: center;
+  row-gap: 4rem;
+  margin: 5rem;
+}
+
+.member_feature__container li:nth-child(n + 3) {
+  grid-column: 1/-1;
+}
+
+.member_feature__container li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 1rem;
+}
+
+.btn__logout {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}

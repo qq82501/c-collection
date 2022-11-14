@@ -6,6 +6,7 @@ import Input from "../UI/Input";
 function MemberProfile(props) {
   const navigate = useNavigate();
   const member = useLoaderData();
+  console.log(member);
 
   const openEditorHandler = function () {
     props.onSetEditor(true);

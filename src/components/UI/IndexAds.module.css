@@ -1,10 +1,10 @@
 .ads__box {
-  width: 100vw;
+  width: 100%;
+  max-width: 120rem;
   height: 80rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 60fr 40fr;
-  padding: 0 4rem;
   gap: 4rem;
   margin-bottom: 4rem;
 }
@@ -18,7 +18,7 @@
   height: 100%;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-size: 100% contain;
+  /* background-size: 100% contain; */
   display: flex;
   justify-content: center;
   align-items: center;

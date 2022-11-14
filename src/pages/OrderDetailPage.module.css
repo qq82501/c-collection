@@ -1,5 +1,6 @@
 .order_detail_page__container {
   position: relative;
+  padding: 4rem 2rem;
 }
 
 .order_list__grid_box {

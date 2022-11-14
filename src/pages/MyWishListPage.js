@@ -25,7 +25,7 @@ function MyWishListPage() {
   });
 
   return (
-    <div className="nav-bar__height">
+    <div>
       <div className={styles.wish_list__title_bar}>您喜愛的商品</div>
       <div
         className={`breadcrumb__height  ${styles.wish_list__items_container}`}

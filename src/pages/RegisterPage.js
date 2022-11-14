@@ -68,7 +68,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="nav-bar__height__outline_container">
+    <div className={styles.register__container}>
       {isLoading && <LoadingSpinner />}
       <OutlineContainer title="註冊">
         <form
