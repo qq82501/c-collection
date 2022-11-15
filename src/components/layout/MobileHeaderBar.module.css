@@ -101,3 +101,20 @@
   visibility: visible;
   pointer-events: all;
 }
+
+/* below width 900px */
+@media (max-width: 56.25em) {
+  .header_logo {
+    font-size: 2.6rem;
+  }
+}
+
+/* below width 432px */
+@media (max-width: 27em) {
+  .header {
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+  .header_logo {
+    font-size: 2rem;
+  }
+}

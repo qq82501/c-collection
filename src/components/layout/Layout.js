@@ -10,7 +10,10 @@ function Layout() {
   return (
     <div className={styles.layout}>
       {deviceMode === "pc" ? <MainNavigator /> : <MobileHeaderBar />}
-      <main className={styles.main__container}>
+      <main
+        className={styles.main__container}
+        style={deviceMode === "mobile" ? { paddingBottom: "5.5rem" } : {}}
+      >
         <Outlet />
       </main>
       {deviceMode === "mobile" && <MobileFooterBar />}

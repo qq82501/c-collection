@@ -11,14 +11,15 @@ import CheckoutAuthContext from "../context/checkout-auth-context";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 function CheckoutPage() {
+  console.log("checkout");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [storeError, setStoreError] = useState(null);
   const [paymentError, setPaymentError] = useState(null);
   const selectedDelivery = useSelector((state) => state.selectedDelivery);
-  const loginUser = useSelector((state) => state.loginUser);
-  const cartItems = loginUser.cartItem;
+  const { loginUser } = useSelector((state) => state);
   const { submitOrder, isLoading } = useSubmitOrder();
+  const cartItems = loginUser.cartItem;
 
   const submitOrderHandler = async function (e) {
     e.preventDefault();
@@ -100,7 +101,6 @@ function CheckoutPage() {
           Math.floor(Math.random() * 10)
         ).join("");
       }
-
       await dispatch(submitOrder(order));
       return navigate("/");
     } catch (error) {
@@ -114,7 +114,9 @@ function CheckoutPage() {
       onSubmit={submitOrderHandler}
     >
       {isLoading && <LoadingSpinner />}
-      <Contact />
+      <div className={styles.check_out__contact_box}>
+        <Contact />
+      </div>
       <div name="order_detail">
         <OrderDetail />
         <Total deliveryFee={selectedDelivery.cost} />
@@ -122,9 +124,11 @@ function CheckoutPage() {
           送出訂單
         </button>
       </div>
-      <CheckoutAuthContext.Provider value={{ storeError, paymentError }}>
-        <DeliveryDetail />
-      </CheckoutAuthContext.Provider>
+      <div className={styles.check_out__delivery_box}>
+        <CheckoutAuthContext.Provider value={{ storeError, paymentError }}>
+          <DeliveryDetail />
+        </CheckoutAuthContext.Provider>
+      </div>
     </form>
   );
 }

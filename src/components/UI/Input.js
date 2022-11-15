@@ -20,6 +20,10 @@ function Input(props) {
             ? 2
             : props.labelTitle.includes("信用卡號")
             ? 15
+            : props.labelTitle.includes("商品編號")
+            ? 12
+            : props.labelTitle.includes("收款帳號")
+            ? props.value.length - 2
             : props.value.length > 4
             ? props.value.length * 1.5
             : props.value.length

@@ -2,4 +2,9 @@
   display: flex;
   align-items: flex-end;
   gap: 5px;
+  width: fit-content;
+}
+
+.input__container label {
+  width: max-content;
 }

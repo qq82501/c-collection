@@ -30,3 +30,14 @@
 .btn__checkout:hover {
   background-color: rgb(49, 49, 49);
 }
+
+/* width below 900px */
+@media (max-width: 56.25em) {
+  .my_cart_page__container {
+    padding: 4rem 2rem;
+    /* display: grid; */
+    grid-template-columns: 1fr;
+    /* grid-template-rows: auto auto 1fr; */
+    /* gap: 4rem; */
+  }
+}

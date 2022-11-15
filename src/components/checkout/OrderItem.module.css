@@ -27,3 +27,21 @@
   right: 0;
   margin: 1rem;
 }
+
+/* width below 528px */
+@media (max-width: 33em) {
+  .order_item__container {
+    grid-template-columns: unset;
+    padding: 2rem;
+  }
+  .order_item__info_box {
+    padding: 1rem 0 3rem 0;
+  }
+}
+/* width below 416px */
+@media (max-width: 33em) {
+  .order_item__container label,
+  .order_item__container input {
+    font-size: 1.5rem;
+  }
+}

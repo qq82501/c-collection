@@ -91,7 +91,7 @@ function RegisterPage() {
           {errorNotIdentical && (
             <p className="error_message">{errorNotIdentical}</p>
           )}
-          <div className={styles.flex_row}>
+          <div className={`${styles.flex_row} ${styles.password_box}`}>
             <InputWithPlaceHolder
               placeholder="*設定密碼"
               ref={refRegisterPsw}
@@ -115,7 +115,7 @@ function RegisterPage() {
               )}
             />
           </div>
-          <div className={styles.flex_row}>
+          <div className={`${styles.flex_row} ${styles.name_box}`}>
             <InputWithPlaceHolder placeholder="*姓　　" id="lastName" />
             <InputWithPlaceHolder placeholder="*名　　" id="firstName" />
           </div>

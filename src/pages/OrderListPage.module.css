@@ -44,3 +44,24 @@
 .order_list__table li:nth-child(1) {
   background-color: transparent;
 }
+
+/* width below 704 */
+@media (max-width: 44em) {
+  .order_list__head {
+    display: none;
+  }
+  .order_list__row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .date {
+    grid-row: 2 / span 1;
+  }
+  .price {
+    justify-self: end;
+    align-self: center;
+    grid-column: 2/-1;
+    grid-row: 1 / span 2;
+  }
+}

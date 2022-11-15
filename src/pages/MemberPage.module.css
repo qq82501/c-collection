@@ -3,6 +3,7 @@
   grid-template-columns: 70fr 30fr;
   font-size: 3rem;
   justify-items: center;
+  /* align-items: center; */
   row-gap: 4rem;
   margin: 5rem;
 }
@@ -26,4 +27,24 @@
   font-weight: 500;
   padding: 1rem 2rem;
   cursor: pointer;
+}
+
+/* width below 560px */
+@media (max-width: 35em) {
+  .member_feature__container li {
+    font-size: 2rem;
+  }
+  .btn__logout {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+  }
+}
+/* width below 400px */
+@media (max-width: 25em) {
+  .member_feature__container li {
+    font-size: 1.6rem;
+  }
+  .btn__logout {
+    font-size: 1.6rem;
+  }
 }

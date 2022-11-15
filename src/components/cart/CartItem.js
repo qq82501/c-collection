@@ -37,7 +37,10 @@ function CartItem(props) {
   return (
     <div className={styles.cart_item__container}>
       {isLoading && <Modal overlap={<div>loading</div>} />}
-      <Link to={`/productDetail/${props.product.productNo}`}>
+      <Link
+        to={`/productDetail/${props.product.productNo}`}
+        className={styles.cart_item__img_box}
+      >
         <img
           className={styles.cart_item__img}
           alt="product"
@@ -98,16 +101,17 @@ function CartItem(props) {
             <ion-icon name="trash-outline"></ion-icon>
           </button>
         </div>
-
-        <Input
-          type="text"
-          readOnly={true}
-          labelTitle="金額 : "
-          value={`${new Intl.NumberFormat("zh-TW", {}).format(
-            props.product.price * props.product.quantity
-          )}`}
-          postfix="TWD"
-        />
+        <div className={styles.total_box}>
+          <Input
+            type="text"
+            readOnly={true}
+            labelTitle="金額 : "
+            value={`${new Intl.NumberFormat("zh-TW", {}).format(
+              props.product.price * props.product.quantity
+            )}`}
+            postfix="TWD"
+          />
+        </div>
       </div>
     </div>
   );

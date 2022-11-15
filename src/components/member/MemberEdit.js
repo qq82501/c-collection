@@ -41,7 +41,7 @@ function MemberEdit() {
       method="post"
       action={`/memberProfile/${params.account}`}
     >
-      <div className={styles.flex_row}>
+      <div className={`${styles.flex_row} ${styles.name_box}`}>
         <InputWithPlaceHolder
           placeholder="*姓　　"
           id="lastName"

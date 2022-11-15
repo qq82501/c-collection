@@ -2,4 +2,26 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 6rem;
+  row-gap: 4rem;
+}
+
+/* width below 704px */
+@media (max-width: 44em) {
+  .search_result__container {
+    grid-template-columns: repeat(2, 22rem);
+  }
+}
+/* width below 576px */
+@media (max-width: 36em) {
+  .search_result__container {
+    grid-template-columns: repeat(2, 18rem);
+    column-gap: 3rem;
+  }
+}
+/* width below 432px */
+@media (max-width: 27em) {
+  .search_result__container {
+    grid-template-columns: repeat(2, 15rem);
+    column-gap: 3rem;
+  }
 }

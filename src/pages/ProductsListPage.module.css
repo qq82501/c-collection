@@ -12,3 +12,26 @@
   row-gap: 8rem;
   z-index: -50;
 }
+
+/* below width 900px */
+@media (max-width: 56.25em) {
+  .products_list__grid {
+    width: unset;
+    grid-template-columns: repeat(2, 30rem);
+  }
+}
+
+/* below width 700px */
+@media (max-width: 43.75em) {
+  .products_list__grid {
+    grid-template-columns: repeat(2, 20rem);
+    row-gap: 5rem;
+  }
+}
+/* below width 490px */
+@media (max-width: 30.625rem) {
+  .products_list__grid {
+    grid-template-columns: repeat(2, 15rem);
+    row-gap: 3rem;
+  }
+}

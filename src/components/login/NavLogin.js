@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./NavLogin.module.css";
-import ImputWithPlaceholder from "../UI/InputWithPlaceholder";
+import InputWithPlaceholder from "../UI/InputWithPlaceholder";
 import { login } from "../../thunk/loginThunkAction";
 import LoadingSpinner from "../UI/LoadingSpinner";
 
@@ -74,8 +74,8 @@ function NavLogin(props) {
       ref={refForm}
     >
       {navLoginError && <p className="error_message">{navLoginError}</p>}
-      <ImputWithPlaceholder placeholder="帳號" id="account" />
-      <ImputWithPlaceholder placeholder="密碼" id="password" type="password" />
+      <InputWithPlaceholder placeholder="帳號" id="account" />
+      <InputWithPlaceholder placeholder="密碼" id="password" type="password" />
       <button type="submit" className="btn__login">
         登入
       </button>

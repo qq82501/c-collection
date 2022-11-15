@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./InputWithPlaceholder.module.css";
 
-const InputWithPlaceHolder = React.forwardRef((props, ref) => {
+const InputWithPlaceholder = React.forwardRef((props, ref) => {
   return (
     <div className={styles.input_box}>
       <input
@@ -24,4 +24,4 @@ const InputWithPlaceHolder = React.forwardRef((props, ref) => {
   );
 });
 
-export default InputWithPlaceHolder;
+export default InputWithPlaceholder;

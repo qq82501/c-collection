@@ -49,7 +49,7 @@ function MemberPage() {
   return (
     <ul
       className={styles.member_feature__container}
-      style={!loginUser && { gridTemplateColumns: "1fr 1fr" }}
+      style={!loginUser ? { gridTemplateColumns: "1fr 1fr" } : {}}
     >
       {listContent}
       <li>

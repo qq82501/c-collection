@@ -51,3 +51,31 @@ div[name="orderDetail"] {
 div[name="totalInfo"] {
   grid-column: 2/-1;
 }
+
+/* width below 900px */
+@media (max-width: 56.25em) {
+  .order_list__grid_box {
+    grid-template-columns: unset;
+    grid-template-rows: 1fr;
+  }
+  div[name="orderInfo"] {
+    grid-row: 1 / span 1;
+  }
+  div[name="orderDetail"] {
+    grid-row: 2 / span 1;
+  }
+}
+
+/* width below 544px */
+@media (max-width: 34em) {
+  .order_list__grid_box {
+    grid-template-columns: unset;
+    grid-template-rows: 1fr;
+  }
+  div[name="orderInfo"] {
+    grid-row: 1 / span 1;
+  }
+  div[name="orderDetail"] {
+    grid-row: 2 / span 1;
+  }
+}

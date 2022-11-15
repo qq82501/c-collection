@@ -75,3 +75,28 @@ input[id="address"] {
 .btn__submit:hover {
   background-color: #3d3d3d;
 }
+
+/* width below 688px */
+@media (max-width: 43em) {
+  .password_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .name_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* width below 544px */
+@media (max-width: 34em) {
+  .register__form div,
+  .register__form input {
+    width: 100%;
+  }
+
+  .CreditCard__box {
+    padding: 5rem 3rem 4rem 3rem;
+  }
+}

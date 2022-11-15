@@ -23,3 +23,22 @@
   font-weight: 700;
   width: 100%;
 }
+
+/* width below 1168px */
+@media (max-width: 73em) {
+  .checkout_page__container {
+    grid-template-columns: unset;
+  }
+
+  .check_out__contact_box {
+    grid-row: 1 / span 1;
+  }
+  .check_out__delivery_box {
+    grid-row: 2 / span 1;
+  }
+
+  .checkout_page__container div[name="order_detail"] {
+    grid-row: unset;
+    grid-column: unset;
+  }
+}

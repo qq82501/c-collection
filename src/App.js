@@ -28,9 +28,9 @@ import MemberEdit from "./components/member/MemberEdit";
 import OrderListPage from "./pages/OrderListPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import SearchResultPage from "./pages/SearchResultPage";
-import CategoryPage from "./pages/CatogoryPage";
+import CategoryPage from "./pages/CategoryPage";
 import MemberPage from "./pages/MemberPage";
-import LoginModal from "./components/login/LoginModal";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ function App() {
           },
         },
         { path: "member", element: <MemberPage /> },
-        { path: "login", element: <LoginModal /> },
+        { path: "login", element: <LoginPage /> },
         {
           path: "product/:category",
           element: <ProductsListPage />,
@@ -92,17 +92,14 @@ function App() {
           element: <MyCartPage />,
           loader: getDelivery,
         },
+
         {
           path: "checkout",
           element: <CheckoutPage />,
         },
         {
           path: "register",
-          element: (
-            <RegisterPage
-            // isLoading={isAddingNewMember}
-            />
-          ),
+          element: <RegisterPage />,
         },
         {
           path: "memberProfile/:account",

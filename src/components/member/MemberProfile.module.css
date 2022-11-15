@@ -34,7 +34,7 @@
   font-size: 2rem;
 }
 
-.creditCard__detail_box {
+/* .creditCard__detail_box {
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
@@ -44,4 +44,21 @@
 .creditCard__detail_box label,
 .creditCard__detail_box input {
   font-size: 1.8rem;
+} */
+
+/* width below 672px */
+@media (max-width: 42em) {
+}
+
+/* width below 496px */
+@media (max-width: 31em) {
+  .member_profile__container label,
+  .member_profile__container input {
+    font-size: 1.6rem;
+  }
+  .btn__edit {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
 }

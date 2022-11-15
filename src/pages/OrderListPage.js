@@ -22,7 +22,7 @@ function OrderListPage() {
       >
         {item.orderNo}
       </Link>
-      <p>
+      <p className={styles.date}>
         {new Intl.DateTimeFormat("en-US", {
           year: "numeric",
           month: "short",
@@ -31,7 +31,9 @@ function OrderListPage() {
           minute: "2-digit",
         }).format(new Date(item.orderDate))}
       </p>
-      <p>{new Intl.NumberFormat("zh-TW").format(item.totalPrice)}</p>
+      <p className={styles.price}>
+        {new Intl.NumberFormat("zh-TW").format(item.totalPrice)}
+      </p>
     </li>
   ));
 

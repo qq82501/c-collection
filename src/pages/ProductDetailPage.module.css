@@ -5,3 +5,25 @@
   grid-template-columns: 50fr 50fr;
   column-gap: 8rem;
 }
+
+/* below width 1200px */
+@media (max-width: 76em) {
+  .product_detail__main_container {
+    max-width: 90%;
+    grid-template-columns: 50fr 50fr;
+    column-gap: 4rem;
+    margin: 4rem auto;
+  }
+}
+
+/* below width 900px */
+@media (max-width: 56.25em) {
+  .product_detail__main_container {
+    max-width: 80%;
+    grid-template-columns: unset;
+    column-gap: unset;
+    row-gap: 2rem;
+    grid-template-rows: 50fr 50fr;
+    margin: 4rem auto;
+  }
+}

@@ -10,6 +10,7 @@ import styles from "./MyCartPage.module.css";
 import LoginModal from "../components/login/LoginModal";
 
 function MyCartPage() {
+  console.log("mycart");
   const navigate = useNavigate();
   const { localCart, loginUser, selectedDelivery } = useSelector(
     (state) => state
@@ -70,7 +71,7 @@ function MyCartPage() {
           結帳 →
         </button>
       </div>
-      {isCheckOutClicked && (
+      {isCheckOutClicked && !loginUser && (
         <Modal
           overlap={<LoginModal onClick={closeModalHandler} />}
           onClick={closeModalHandler}

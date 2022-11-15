@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import styles from "./MainNavigator.module.css";
 import NavButton from "../UI/NavButton";
 import Category from "../products/Category";
 import NavLogin from "../login/NavLogin";
 import SearchBar from "../search/SearchBar";
+import styles from "./MainNavigator.module.css";
 
 function MainNavigator() {
   const refSearch = useRef();
