@@ -10,7 +10,6 @@ function initialStateThunk() {
       const loginUserLatest = members.find(
         (member) => member.account === localLoginUser.account
       );
-      console.log(loginUserLatest);
       dispatch({
         type: "SYNC_STATE_DATA",
         payload: { ...state, products, loginUser: loginUserLatest },

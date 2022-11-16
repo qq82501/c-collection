@@ -5,6 +5,7 @@ import Input from "../UI/Input";
 import updateFav from "../../thunk/updateFavThunkAction";
 import useUpdateCart from "../../hook/useUpdaeCart";
 import removeCartItemThunk from "../../thunk/removeCartThunkAction";
+import LoadingSpinner from "../UI/LoadingSpinner";
 import Modal from "../UI/Modal";
 
 function CartItem(props) {
@@ -36,7 +37,7 @@ function CartItem(props) {
 
   return (
     <div className={styles.cart_item__container}>
-      {isLoading && <Modal overlap={<div>loading</div>} />}
+      {isLoading && <Modal overlap={<LoadingSpinner />} />}
       <Link
         to={`/productDetail/${props.product.productNo}`}
         className={styles.cart_item__img_box}

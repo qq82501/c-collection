@@ -26,3 +26,13 @@
 .store_delivery__container label {
   padding-right: 1rem;
 }
+
+/* width below 656px */
+@media (max-width: 41em) {
+  .store_delivery__recipient_box {
+    flex-direction: column;
+  }
+  .store_delivery__recipient_box input {
+    width: 100%;
+  }
+}

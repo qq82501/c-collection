@@ -42,6 +42,6 @@
 @media (max-width: 33em) {
   .order_item__container label,
   .order_item__container input {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }

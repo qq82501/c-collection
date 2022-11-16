@@ -5,7 +5,7 @@ const InputWithPlaceholder = React.forwardRef((props, ref) => {
   return (
     <div className={styles.input_box}>
       <input
-        minlength={props.minlength}
+        minLength={props.minLength}
         ref={ref}
         className={styles.input}
         id={props.id}

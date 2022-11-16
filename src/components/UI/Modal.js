@@ -1,4 +1,4 @@
-// import styles from "./Modal.module.css";
+import styles from "./Modal.module.css";
 
 function Modal(props) {
   return (
@@ -17,7 +17,7 @@ function Backdrop(props) {
 }
 
 function ModalOverlap(props) {
-  return <div>{props.children}</div>;
+  return <div className={styles.overlap__container}>{props.children}</div>;
 }
 
 export default Modal;

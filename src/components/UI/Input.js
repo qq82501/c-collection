@@ -24,6 +24,10 @@ function Input(props) {
             ? 12
             : props.labelTitle.includes("收款帳號")
             ? props.value.length - 2
+            : props.labelTitle.includes("聯絡電話")
+            ? 9
+            : props.labelTitle.includes("信箱")
+            ? 15
             : props.value.length > 4
             ? props.value.length * 1.5
             : props.value.length

@@ -31,9 +31,11 @@ import SearchResultPage from "./pages/SearchResultPage";
 import CategoryPage from "./pages/CategoryPage";
 import MemberPage from "./pages/MemberPage";
 import LoginPage from "./pages/LoginPage";
+import ScrollToTop from "./helper/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     window.addEventListener("resize", (e) => {
       const width = window.innerWidth;
@@ -49,7 +51,12 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <>
+          <ScrollToTop />
+          <Layout />
+        </>
+      ),
       children: [
         { index: true, element: <WelcomePage /> },
         {
@@ -79,7 +86,6 @@ function App() {
           path: "productDetail/:productNo",
           element: <ProductDetailPage />,
           loader: ({ params }) => {
-            console.log("p loader");
             return getProductDetail(params.productNo);
           },
         },
@@ -141,7 +147,12 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      {/* <ScrollToTop /> */}
+    </>
+  );
 }
 
 export default App;

@@ -69,13 +69,15 @@ function DeliveryDetail() {
         <div>{tabDetail}</div>
         <div className={`${styles.payment_box} ${paymentError && "error_box"}`}>
           {paymentError && <p className="error_message">{paymentError}</p>}
-          <InputRadio
-            labelTitle="付款方式 :"
-            options={selectedDelivery.payment}
-            selected={payment}
-            name="payment"
-            onClick={setPaymentHandler}
-          />
+          <div className={styles.payment_radio_box}>
+            <InputRadio
+              labelTitle="付款方式 :"
+              options={selectedDelivery.payment}
+              selected={payment}
+              name="payment"
+              onClick={setPaymentHandler}
+            />
+          </div>
           {payment && payment !== "信用卡扣款" && (
             <p className={styles.payment_message}>{paymentContent}</p>
           )}

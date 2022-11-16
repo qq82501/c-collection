@@ -1,4 +1,11 @@
 .slider_box {
   margin-bottom: 4rem;
+  height: 40rem;
   z-index: 50;
+}
+/* width below 656px  */
+@media (max-width: 41em) {
+  .slider_box {
+    height: 20rem;
+  }
 }

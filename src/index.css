@@ -127,3 +127,10 @@ input[readOnly]:focus {
 .btn__login:hover {
   background-color: #3d3d3d;
 }
+
+/* width below 608px */
+@media (max-width: 38em) {
+  html {
+    font-size: 60%;
+  }
+}

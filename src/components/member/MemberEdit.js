@@ -16,7 +16,6 @@ function MemberEdit() {
   const outletCtx = useOutletContext();
   const navigate = useNavigate();
   const member = useLoaderData();
-  console.log(member);
 
   const [isCreditOpen, setIsCreditOpen] = useState(
     Boolean(member.creditCard?.cardNumber)

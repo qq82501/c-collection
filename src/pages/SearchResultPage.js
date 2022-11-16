@@ -14,6 +14,7 @@ function SearchResultPage() {
     const matchResults = products.filter((product) =>
       product.title.includes(query)
     );
+    document.title = `C.Collection — 搜尋 "${query}" 結果`;
     setSearchResults(matchResults);
   }, [products, query]);
 

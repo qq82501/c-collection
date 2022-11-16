@@ -10,7 +10,6 @@ import styles from "./MyCartPage.module.css";
 import LoginModal from "../components/login/LoginModal";
 
 function MyCartPage() {
-  console.log("mycart");
   const navigate = useNavigate();
   const { localCart, loginUser, selectedDelivery } = useSelector(
     (state) => state

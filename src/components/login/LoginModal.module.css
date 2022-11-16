@@ -59,3 +59,36 @@
   top: 0;
   padding: 0.5rem;
 }
+
+/* width below 900px */
+@media (max-width: 56.25em) {
+  .login_modal__container {
+    width: 70%;
+  }
+}
+/* width below 544px */
+@media (max-width: 34em) {
+  .login_modal__container {
+    font-size: 2rem;
+  }
+  .login_modal__container input {
+    width: 100%;
+    font-size: 1.6rem;
+  }
+  .login_modal__container label {
+    font-size: 1.6rem;
+  }
+}
+/* width below 432px */
+@media (max-width: 27em) {
+  .login_modal__container {
+    font-size: 1.6rem;
+    padding: 4rem 2rem;
+  }
+  .login_modal__container input {
+    font-size: 1.4rem;
+  }
+  .login_modal__container label {
+    font-size: 1.4rem;
+  }
+}

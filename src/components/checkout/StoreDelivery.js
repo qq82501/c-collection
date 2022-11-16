@@ -34,7 +34,7 @@ function StoreDelivery() {
 
   const setDistHandler = function (e) {
     setSelected((prev) => {
-      return { ...prev, dist: e.target.value };
+      return { ...prev, dist: e.target.value, road: null };
     });
   };
 
@@ -69,9 +69,7 @@ function StoreDelivery() {
       stores
         .filter(
           (store) =>
-            store.city === selected.city &&
-            store.dist === selected.dist &&
-            store.road === selected.road
+            store.city === selected.city && store.dist === selected.dist
         )
         .map((store) => store.storeName)
     ),

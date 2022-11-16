@@ -4,7 +4,6 @@ import Input from "../UI/Input";
 
 function Contact() {
   const loginUser = useSelector((state) => state.loginUser);
-  console.log(loginUser);
 
   return (
     <div className={styles.contact__container}>

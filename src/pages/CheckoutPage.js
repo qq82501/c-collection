@@ -11,7 +11,6 @@ import CheckoutAuthContext from "../context/checkout-auth-context";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 function CheckoutPage() {
-  console.log("checkout");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [storeError, setStoreError] = useState(null);
@@ -80,13 +79,6 @@ function CheckoutPage() {
       }
 
       if (formData.get("payment") === "信用卡扣款") {
-        if (
-          formData.get("cardNumber").length < 19 ||
-          formData.get("expire").length < 7 ||
-          formData.get("csv").length < 3
-        )
-          return;
-
         order.payment.paymentStatus = "已完成";
         order.payment.credit = {
           creditNo: formData.get("cardNumber"),
@@ -101,6 +93,16 @@ function CheckoutPage() {
           Math.floor(Math.random() * 10)
         ).join("");
       }
+
+      if (
+        formData.get("payment") === "信用卡扣款" &&
+        (formData.get("cardNumber").length < 19 ||
+          formData.get("expire").length < 7 ||
+          formData.get("csv").length < 3)
+      ) {
+        return;
+      }
+
       await dispatch(submitOrder(order));
       return navigate("/");
     } catch (error) {

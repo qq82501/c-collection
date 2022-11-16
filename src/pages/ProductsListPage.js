@@ -5,7 +5,6 @@ import styles from "./ProductsListPage.module.css";
 
 function ProductsListPage() {
   const { products, path } = useLoaderData();
-  console.log(path);
 
   const productsContent = products.map((product) => {
     return <ProductItem product={product} key={product.productNo} />;

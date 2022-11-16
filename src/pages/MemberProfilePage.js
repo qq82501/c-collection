@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, useActionData, useNavigate } from "react-router-dom";
+import { Outlet, useActionData, useNavigate, redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import OutlineContainer from "../components/UI/OutlineContainer";
 import MemberProfile from "../components/member/MemberProfile";
@@ -14,13 +14,12 @@ function MemberProfilePage() {
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   const isLogin = Boolean(loginUser);
-  console.log("actionStatus", actionStatus);
 
   useEffect(() => {
     if (!isLogin) {
       return navigate("/");
     }
-
+    console.log(actionStatus);
     if (actionStatus) {
       if (actionStatus.status === "sucess") {
         dispatch({
@@ -59,7 +58,18 @@ export async function updateMemberFromProfile({ request, params }) {
       csv: formData.get("csv"),
     },
   };
-
+  if (editProfile.creditCard.cardNumber) {
+    console.log(editProfile.creditCard.cardNumber.length);
+    console.log(editProfile.creditCard.expiry.length);
+    console.log(editProfile.creditCard.csv.length);
+    if (
+      editProfile.creditCard.cardNumber.length < 19 ||
+      editProfile.creditCard.expiry.length < 7 ||
+      editProfile.creditCard.csv.length < 3
+    ) {
+      return redirect(`/memberProfile/${params.account}/edit`);
+    }
+  }
   await updateMember(editProfile);
 
   return { status: "sucess", updatedProfile: editProfile };

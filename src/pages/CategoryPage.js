@@ -4,7 +4,6 @@ import styles from "./CategoryPage.module.css";
 
 function CategoryPage() {
   const categories = useLoaderData();
-  console.log(categories);
 
   const categoriesContent = categories.map((category) => {
     const childCategoruContent = category.childCat

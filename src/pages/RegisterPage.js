@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import OutlineContainer from "../components/UI/OutlineContainer";
 import InputWithPlaceHolder from "../components/UI/InputWithPlaceholder";
 import { PlusIcon } from "@heroicons/react/24/outline";
@@ -16,6 +17,8 @@ function RegisterPage() {
   const navigate = useNavigate();
   const refRegisterPsw = useRef();
   const refConfirmPsw = useRef();
+  const refCredit = useRef();
+  const { deviceMode } = useSelector((state) => state);
 
   const {
     inputAccount,
@@ -50,16 +53,21 @@ function RegisterPage() {
 
   const submitNewMemberHandler = async function (e) {
     e.preventDefault();
+    const { errorCreditCard, errorCsv, errorExpiry } = refCredit.current;
 
-    if (
-      errorExisted ||
-      errorBod ||
-      errorFormat ||
-      errorNotIdentical ||
-      errorContact
-    )
-      return;
     try {
+      if (
+        errorExisted ||
+        errorBod ||
+        errorFormat ||
+        errorNotIdentical ||
+        errorContact ||
+        errorCreditCard ||
+        errorCsv ||
+        errorExpiry
+      )
+        return;
+
       setIsLoading(true);
       await addNewMember(e.target);
       setIsLoading(false);
@@ -86,7 +94,9 @@ function RegisterPage() {
               type="text"
               id="email"
             />
-            <div>{checkingAccount && <LoadingSpinner />}</div>
+            <div>
+              {checkingAccount && deviceMode !== "mobile" && <LoadingSpinner />}
+            </div>
           </div>
           {errorNotIdentical && (
             <p className="error_message">{errorNotIdentical}</p>
@@ -158,7 +168,7 @@ function RegisterPage() {
               >
                 <ion-icon name="close-outline"></ion-icon>
               </button>
-              <CreditCard />
+              <CreditCard ref={refCredit} />
             </div>
           )}
           <button type="submit" className={styles.btn__submit}>

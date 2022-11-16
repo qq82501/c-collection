@@ -1,11 +1,11 @@
+import React, { useImperativeHandle } from "react";
 import { useSelector } from "react-redux";
 import styles from "./CreditCard.module.css";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 import useCheckCreditCard from "../../hook/useCheckCreditCard";
 
-function CreditCard() {
+const CreditCard = React.forwardRef((props, ref) => {
   const loginUser = useSelector((state) => state.loginUser);
-
   const {
     inputCreditCard,
     inputCsv,
@@ -20,6 +20,10 @@ function CreditCard() {
     checkCsvHandler,
     checkExpiryHandler,
   } = useCheckCreditCard();
+
+  useImperativeHandle(ref, () => {
+    return { errorCreditCard, errorCsv, errorExpiry };
+  });
 
   return (
     <div className={styles.credit_card__container}>
@@ -56,6 +60,6 @@ function CreditCard() {
       />
     </div>
   );
-}
+});
 
 export default CreditCard;

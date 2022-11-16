@@ -1,7 +1,6 @@
 .sliders_container {
   max-width: 120rem;
-  height: 40rem;
-  /* padding: 0 2rem 0 2rem; */
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
