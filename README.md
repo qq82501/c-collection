@@ -18,7 +18,7 @@ a jewelry e-commerce website for side-project.
 12. Order list page.
 13. Order detail page
 14. RWD design
-15. Client-site rendering
+15. Client-side rendering 
 
 ## Tools:
 
