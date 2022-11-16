@@ -1,6 +1,6 @@
 # C-Colleciton
 
-a jewelry e-commerce website for side-project.
+A jewelry e-commerce website for side-project.
 
 ## Functionality:
 
@@ -18,7 +18,7 @@ a jewelry e-commerce website for side-project.
 12. Order list page.
 13. Order detail page
 14. RWD design
-15. Client-side rendering 
+15. Client-side rendering
 
 ## Tools:
 
@@ -28,3 +28,6 @@ a jewelry e-commerce website for side-project.
 4. React-router-dom v6.4.2^
 5. React-redux
 6. Firebase
+
+Designed & Built by Cindy Lu in 2022, only for side-project purpose.
+All products data (product name, images) are from "https://www.ecostyle.com.tw/"
