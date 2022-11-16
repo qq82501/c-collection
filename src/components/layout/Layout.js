@@ -16,6 +16,7 @@ function Layout() {
       >
         <Outlet />
       </main>
+      {deviceMode !== "mobile" && <p className={styles.copyright}>© Designed & Built by Cindy Lu, 2022</p>}
       {deviceMode === "mobile" && <MobileFooterBar />}
     </div>
   );

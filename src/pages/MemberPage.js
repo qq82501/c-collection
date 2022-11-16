@@ -47,15 +47,18 @@ function MemberPage() {
   );
 
   return (
-    <ul
-      className={styles.member_feature__container}
-      style={!loginUser ? { gridTemplateColumns: "1fr 1fr" } : {}}
-    >
-      {listContent}
-      <li>
-        <Link className="link">關於C.Collection</Link>
-      </li>
-    </ul>
+    <>
+      <ul
+        className={styles.member_feature__container}
+        style={!loginUser ? { gridTemplateColumns: "1fr 1fr" } : {}}
+      >
+        {listContent}
+        <li>
+          <Link className="link">關於C.Collection</Link>
+        </li>
+      </ul>
+      {<p className={styles.copyright}>© Designed & Built by Cindy Lu, 2022</p>}
+    </>
   );
 }
 

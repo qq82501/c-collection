@@ -28,6 +28,12 @@
   padding: 1rem 2rem;
   cursor: pointer;
 }
+.copyright {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 2rem;
+}
 
 /* width below 560px */
 @media (max-width: 35em) {
