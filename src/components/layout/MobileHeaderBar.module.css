@@ -107,6 +107,11 @@
   .header_logo {
     font-size: 2.6rem;
   }
+
+  .icon_quantity {
+    font-size: 5px;
+    transform: scale(1);
+  }
 }
 
 /* below width 432px */

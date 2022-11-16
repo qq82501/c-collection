@@ -17,6 +17,8 @@ a jewelry e-commerce website for side-project.
 11. Order submit and store in DB.
 12. Order list page.
 13. Order detail page
+14. RWD design
+15. Client-site rendering
 
 ## Tools:
 
