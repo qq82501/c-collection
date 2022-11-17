@@ -4,6 +4,7 @@
 
 .main__container {
   padding-top: 6rem;
+  position: relative;
 }
 
 .copyright {

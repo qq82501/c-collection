@@ -19,6 +19,21 @@
   padding-bottom: 1rem;
 }
 
+li[name="list_login"] {
+  position: relative;
+}
+
+li[name="list_login"]::after {
+  content: "";
+  width: 3px;
+  height: 80%;
+  border-right: 1px solid rgb(151, 151, 151);
+  border-radius: 2px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
 .btn__logout {
   border: none;
   background-color: #000;
@@ -29,10 +44,15 @@
   cursor: pointer;
 }
 .copyright {
+  width: 100%;
   text-align: center;
   font-size: 2rem;
   letter-spacing: 0.3rem;
   margin-bottom: 2rem;
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* width below 560px */
@@ -44,6 +64,9 @@
     font-size: 2rem;
     padding: 0.5rem 1rem;
   }
+  .copyright {
+    font-size: 1.6rem;
+  }
 }
 /* width below 400px */
 @media (max-width: 25em) {
@@ -52,5 +75,8 @@
   }
   .btn__logout {
     font-size: 1.6rem;
+  }
+  .copyright {
+    font-size: 1.2rem;
   }
 }

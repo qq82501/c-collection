@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.footer__list li:last-child button {
+  border-right: unset;
+}
+
 .footer__list button:hover {
   color: grey;
 }

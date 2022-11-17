@@ -1,5 +1,6 @@
 import { getMembers, updateMember } from "../helper/helper";
 import { useState } from "react";
+import { wait } from "../helper/helper";
 
 function useUpdateCart() {
   const [error, setError] = useState(null);
@@ -86,6 +87,7 @@ function useUpdateCart() {
 
         if (!loginUser) {
           setIsLoading(true);
+          await wait(300);
           // update local
           localStorage.setItem("localCart", JSON.stringify(cartItemsLatest));
           // update state

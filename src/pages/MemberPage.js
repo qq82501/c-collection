@@ -33,7 +33,7 @@ function MemberPage() {
     </>
   ) : (
     <>
-      <li>
+      <li name="list_login">
         <Link to="/login" className="link">
           登入
         </Link>

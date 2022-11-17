@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import styles from "./Modal.module.css";
 
 function Modal(props) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
   return (
     <Backdrop onClick={props.onClick}>
       <ModalOverlap>{props.overlap}</ModalOverlap>
