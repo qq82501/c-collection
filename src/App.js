@@ -15,7 +15,6 @@ import {
   getCategories,
 } from "./helper/helper";
 import ProductDetailPage from "./pages/ProductDetailPage";
-// import Page2 from "./pages/Page2";
 import MyWishListPage from "./pages/MyWishListPage";
 import MyCartPage from "./pages/MyCartPage";
 import CheckoutPage from "./pages/CheckoutPage";

@@ -5,6 +5,7 @@
   row-gap: 4rem;
 }
 
+
 /* width below 704px */
 @media (max-width: 44em) {
   .search_result__container {

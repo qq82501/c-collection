@@ -13,16 +13,24 @@ function MyWishListPage() {
     setClickedProduct(productNo);
   };
 
-  const favContents = favItems.map((item) => {
-    return (
-      <FavItem
-        className={clickedProduct.productNo === item.productNo && "open-spec"}
-        key={item.productNo}
-        product={item}
-        onClick={openSpecListHandler}
-      />
+  let favContents;
+  if (favItems.length) {
+    favContents = favItems.map((item) => {
+      return (
+        <FavItem
+          className={clickedProduct.productNo === item.productNo && "open-spec"}
+          key={item.productNo}
+          product={item}
+          onClick={openSpecListHandler}
+        />
+      );
+    });
+  }
+  if (!favItems.length) {
+    favContents = (
+      <p className="non_result__box">還未有商品加入呢，去逛逛有什麼喜歡的吧!</p>
     );
-  });
+  }
 
   return (
     <div>

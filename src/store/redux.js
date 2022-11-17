@@ -61,9 +61,6 @@ const reducer = function (state = initialState, action) {
     case "SET_DEVICE_MODE": {
       return { ...state, deviceMode: action.payload };
     }
-    case "TEST":
-      console.log("redux test");
-      return state;
 
     default:
       return state;
