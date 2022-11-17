@@ -30,5 +30,4 @@ A jewelry e-commerce website for side-project.
 6. Firebase
 
 Designed & Built by Cindy Lu in 2022, only for side-project purpose.
-
 All products data (product name, images) are from "https://www.ecostyle.com.tw/"
