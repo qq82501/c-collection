@@ -39,7 +39,7 @@
   justify-content: space-between;
   align-items: flex-end;
   justify-self: right;
-  padding: 1rem 1rem 0 0;
+  padding: 0.5rem 1rem 0 0;
 }
 
 .cart_item__btns_box {
@@ -47,19 +47,15 @@
   gap: 0.5rem;
   align-items: center;
 }
-
-.cart_item__fav_btn {
-  font-size: 2.6rem;
-}
-
-.cart_item__close_btn {
-  font-size: 2.6rem;
+.cart_item__btns_box svg {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .total_box {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 1%;
 }
 
 /* width below 560px */

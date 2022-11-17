@@ -69,7 +69,7 @@ ul {
   cursor: pointer;
 }
 
-.favorite ion-icon:hover {
+.favorite svg:hover {
   color: red;
 }
 

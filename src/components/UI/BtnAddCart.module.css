@@ -9,6 +9,7 @@
   cursor: pointer;
 }
 
-.btn__add_cart ion-icon {
-  font-size: 4rem;
+.btn__add_cart svg {
+  width: 2.4rem;
+  height: 2.4rem;
 }

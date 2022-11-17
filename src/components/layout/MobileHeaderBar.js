@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { ShoppingCartIcon, HeartIcon } from "@heroicons/react/24/outline";
 
 import styles from "./MobileHeaderBar.module.css";
 import NavButton from "../UI/NavButton";
@@ -46,7 +47,7 @@ function MobileHeaderBar() {
             <li className={styles.nav_icon__fav}>
               <Link to="/myWishList">
                 <NavButton>
-                  <ion-icon name="heart-outline"></ion-icon>
+                  <HeartIcon />
                 </NavButton>
                 {favItems.length ? (
                   <div className={styles.icon_quantity}>
@@ -60,7 +61,7 @@ function MobileHeaderBar() {
             <li className={styles.nav_icon__cart}>
               <Link to="/myCart">
                 <NavButton>
-                  <ion-icon name="cart-outline"></ion-icon>
+                  <ShoppingCartIcon />
                 </NavButton>
               </Link>
               {cartItems.length ? (

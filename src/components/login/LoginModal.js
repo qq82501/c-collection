@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 import styles from "./LoginModal.module.css";
 import { login } from "../../thunk/loginThunkAction";
@@ -59,7 +60,7 @@ function LoginModal(props) {
         onClick={props.onClick}
         className={`btn__close ${styles.login_modal__btn_close}`}
       >
-        <ion-icon name="close-outline"></ion-icon>
+        <XMarkIcon />
       </button>
     </div>
   );

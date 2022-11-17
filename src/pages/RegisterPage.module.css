@@ -59,6 +59,10 @@ input[id="address"] {
   right: 0;
   padding: 5px;
 }
+.credit_card__btn__close {
+  width: 4rem;
+  height: 4rem;
+}
 
 .btn__submit {
   margin-top: 5rem;

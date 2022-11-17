@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import styles from "./FavItem.module.css";
 import SpecSelector from "./SpecSelector";
 import updateFav from "../../thunk/updateFavThunkAction";
@@ -48,7 +49,7 @@ function FavItem(props) {
             className={`btn__close ${styles.fav_item__close} `}
             onClick={updateFavHandler}
           >
-            <ion-icon name="close-outline"></ion-icon>
+            <XMarkIcon />
           </button>
         </div>
         <div className={styles.product_item__info}>

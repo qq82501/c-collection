@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { HeartIcon } from "@heroicons/react/24/solid";
 import styles from "./ProductItem.module.css";
 import updateFav from "../../thunk/updateFavThunkAction";
 
@@ -42,7 +43,7 @@ function ProductItem(props) {
               "fav__active"
             }`}
           >
-            <ion-icon name="heart"></ion-icon>
+            <HeartIcon />
           </button>
         </div>
         <div className={styles.product_item__info}>

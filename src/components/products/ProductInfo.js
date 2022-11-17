@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form } from "react-router-dom";
+import { HeartIcon } from "@heroicons/react/24/solid";
 import styles from "./ProductInfo.module.css";
 import updateFav from "../../thunk/updateFavThunkAction";
 import BtnAddCart from "../UI/BtnAddCart";
@@ -60,7 +61,7 @@ function ProductInfo(props) {
           }`}
           onClick={updateFavHandler}
         >
-          <ion-icon name="heart"></ion-icon>
+          <HeartIcon />
         </button>
         <p className={styles.product_info_price}>{`${product.price} TWD`}</p>
       </div>

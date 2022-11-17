@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { UserIcon as UserIconSolid } from "@heroicons/react/24/solid";
+import {
+  UserIcon,
+  HeartIcon,
+  ShoppingCartIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 
 import NavButton from "../UI/NavButton";
 import Category from "../products/Category";
@@ -78,11 +85,11 @@ function MainNavigator() {
 
   const loginButton = loginUser ? (
     <NavButton onClick={openNavLoginHandler}>
-      <ion-icon name="person"></ion-icon>
+      <UserIconSolid />
     </NavButton>
   ) : (
     <NavButton onClick={openNavLoginHandler}>
-      <ion-icon name="person-outline"></ion-icon>
+      <UserIcon />
     </NavButton>
   );
 
@@ -107,7 +114,7 @@ function MainNavigator() {
           <ul className={styles["nav-icons"]}>
             <li className="nav_icon__search">
               <NavButton onClick={openSearchBarHandler}>
-                <ion-icon name="search-outline"></ion-icon>
+                <MagnifyingGlassIcon />
               </NavButton>
               <SearchBar
                 isSearchBarOpen={isSearchBarOpen}
@@ -118,7 +125,7 @@ function MainNavigator() {
             <li className={styles.nav_icon__fav}>
               <Link to="/myWishList">
                 <NavButton>
-                  <ion-icon name="heart-outline"></ion-icon>
+                  <HeartIcon />
                 </NavButton>
                 {favItems.length ? (
                   <div className={styles.icon_quantity}>
@@ -132,7 +139,7 @@ function MainNavigator() {
             <li className={styles.nav_icon__cart}>
               <Link to="/myCart">
                 <NavButton>
-                  <ion-icon name="cart-outline"></ion-icon>
+                  <ShoppingCartIcon />
                 </NavButton>
               </Link>
               {cartItems.length ? (

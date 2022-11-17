@@ -9,16 +9,12 @@ function MobileFooterBar() {
   const { loginUser } = useSelector((state) => state);
 
   const loginButton = loginUser ? (
-    <NavButton
-    //  onClick={openNavLoginHandler}
-    >
+    <NavButton>
       <UserIconSolid />
       <span>我的</span>
     </NavButton>
   ) : (
-    <NavButton
-    //  onClick={openNavLoginHandler}
-    >
+    <NavButton>
       <UserIcon />
       <span>我的</span>
     </NavButton>

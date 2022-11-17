@@ -51,6 +51,10 @@ input[id="address"] {
   right: 0;
   padding: 5px;
 }
+.credit_card__btn__close svg {
+  width: 4rem;
+  height: 4rem;
+}
 
 .btns_box {
   display: flex;

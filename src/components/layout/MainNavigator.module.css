@@ -46,15 +46,19 @@
 
 .nav-icons button {
   border-right: 0.7px solid #ccc;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  padding: 0 0.7rem;
 }
 
 .nav-icons li:last-child button {
   border-right: none;
 }
 
-.nav-icons ion-icon {
-  padding: 0 0.7rem;
+.nav-icons svg {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .nav_icon__fav {
@@ -67,12 +71,12 @@
 
 .icon_quantity {
   background-color: red;
-  width: 50%;
-  height: 50%;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   position: absolute;
-  top: -5%;
-  right: -5%;
+  top: -25%;
+  right: -3%;
   font-size: 2px;
   font-weight: 500;
   color: #fff;
@@ -100,4 +104,3 @@
   visibility: visible;
   pointer-events: all;
 }
-

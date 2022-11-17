@@ -6,7 +6,7 @@ import {
   useOutletContext,
   useParams,
 } from "react-router-dom";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import InputWithPlaceHolder from "../UI/InputWithPlaceholder";
 import CreditCard from "../checkout/CreditCard";
 import styles from "./MemberEdit.module.css";
@@ -84,7 +84,7 @@ function MemberEdit() {
             onClick={creditCloseHandler}
             className={`btn__close ${styles.credit_card__btn__close}`}
           >
-            <ion-icon name="close-outline"></ion-icon>
+            <XMarkIcon />
           </button>
           <CreditCard loginUser={member} />
         </div>

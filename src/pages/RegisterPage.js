@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import OutlineContainer from "../components/UI/OutlineContainer";
 import InputWithPlaceHolder from "../components/UI/InputWithPlaceholder";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import CreditCard from "../components/checkout/CreditCard";
 import styles from "./RegisterPage.module.css";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
@@ -166,7 +166,7 @@ function RegisterPage() {
                 onClick={creditCloseHandler}
                 className={`btn__close ${styles.credit_card__btn__close}`}
               >
-                <ion-icon name="close-outline"></ion-icon>
+                <XMarkIcon />
               </button>
               <CreditCard ref={refCredit} />
             </div>

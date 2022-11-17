@@ -7,6 +7,8 @@ import useUpdateCart from "../../hook/useUpdaeCart";
 import removeCartItemThunk from "../../thunk/removeCartThunkAction";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Modal from "../UI/Modal";
+import { TrashIcon } from "@heroicons/react/24/outline";
+import { HeartIcon } from "@heroicons/react/24/solid";
 
 function CartItem(props) {
   const { updateCartThunk, isLoading } = useUpdateCart();
@@ -93,13 +95,13 @@ function CartItem(props) {
               ) && `fav__active`
             }`}
           >
-            <ion-icon name="heart"></ion-icon>
+            <HeartIcon />
           </button>
           <button
             onClick={removeCartItem}
             className={`btn__close ${styles.cart_item__close_btn}`}
           >
-            <ion-icon name="trash-outline"></ion-icon>
+            <TrashIcon />
           </button>
         </div>
         <div className={styles.total_box}>

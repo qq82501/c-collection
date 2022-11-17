@@ -59,6 +59,10 @@
   top: 0;
   padding: 0.5rem;
 }
+.login_modal__btn_close svg {
+  width: 4rem;
+  height: 4rem;
+}
 
 /* width below 900px */
 @media (max-width: 56.25em) {

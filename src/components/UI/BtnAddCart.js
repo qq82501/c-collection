@@ -1,4 +1,5 @@
 import styles from "./BtnAddCart.module.css";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 function BtnAddCart(props) {
   return (
@@ -7,7 +8,7 @@ function BtnAddCart(props) {
       className={`${styles.btn__add_cart} ${props.className} flex-center `}
     >
       <span>
-        <ion-icon name="cart-outline"></ion-icon>
+        <ShoppingCartIcon />
       </span>
       加入購物車
     </button>
