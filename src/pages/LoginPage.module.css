@@ -27,8 +27,12 @@
   padding: 0 1rem;
   font-weight: 500;
 }
-.login_page__register_box span[name="register"]:hover {
-  text-decoration: underline;
+
+/* hover effect */
+@media (hover: hover) {
+  .login_page__register_box span[name="register"]:hover {
+    text-decoration: underline;
+  }
 }
 
 /* width below 576px */

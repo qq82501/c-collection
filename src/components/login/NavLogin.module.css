@@ -29,10 +29,6 @@
   transition: all 0.3s;
 }
 
-.nav_login__member_mg_list li:hover {
-  box-shadow: 0px 12px 12px -12px rgba(0, 0, 0, 0.7);
-}
-
 .nav_login__member_mg_list a:link,
 .nav_login__member_mg_list a:visited {
   width: 100%;
@@ -57,10 +53,6 @@
   border: 1px solid #5f5f5f;
 }
 
-.btn__logout:hover {
-  background-color: #f6f6f6;
-}
-
 .nav_login__register_box {
   align-self: flex-end;
   font-size: 1.4rem;
@@ -70,6 +62,16 @@
   padding: 0 1rem;
   font-weight: 500;
 }
-.nav_login__register_box span[name="register"]:hover {
-  text-decoration: underline;
+
+/* hover effect */
+@media (hover: hover) {
+  .nav_login__member_mg_list li:hover {
+    box-shadow: 0px 12px 12px -12px rgba(0, 0, 0, 0.7);
+  }
+  .btn__logout:hover {
+    background-color: #f6f6f6;
+  }
+  .nav_login__register_box span[name="register"]:hover {
+    text-decoration: underline;
+  }
 }

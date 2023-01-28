@@ -53,7 +53,6 @@ function RegisterPage() {
 
   const submitNewMemberHandler = async function (e) {
     e.preventDefault();
-    const { errorCreditCard, errorCsv, errorExpiry } = refCredit.current;
 
     try {
       if (
@@ -61,12 +60,14 @@ function RegisterPage() {
         errorBod ||
         errorFormat ||
         errorNotIdentical ||
-        errorContact ||
-        errorCreditCard ||
-        errorCsv ||
-        errorExpiry
+        errorContact
       )
         return;
+
+      if (isCreditOpen) {
+        const { errorCreditCard, errorCsv, errorExpiry } = refCredit.current;
+        if (errorCreditCard || errorCsv || errorExpiry) return;
+      }
 
       setIsLoading(true);
       await addNewMember(e.target);

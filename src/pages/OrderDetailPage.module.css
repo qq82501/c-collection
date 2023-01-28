@@ -35,10 +35,6 @@
   align-items: center;
   cursor: pointer;
 }
-.order_list__return_link:hover,
-.order_list__return_link:active {
-  color: rgb(62, 62, 62);
-}
 
 .order_list__return_link span {
   width: 6rem;
@@ -50,6 +46,14 @@ div[name="orderDetail"] {
 
 div[name="totalInfo"] {
   grid-column: 2/-1;
+}
+
+/* hover effect */
+@media (hover: hover) {
+  .order_list__return_link:hover,
+  .order_list__return_link:active {
+    color: rgb(62, 62, 62);
+  }
 }
 
 /* width below 900px */

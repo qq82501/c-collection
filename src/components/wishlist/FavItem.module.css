@@ -35,6 +35,9 @@
   align-items: center;
 }
 
-.fav_item__close :hover {
-  color: black;
+/* hover effect */
+@media (hover: hover) {
+  .fav_item__close :hover {
+    color: black;
+  }
 }

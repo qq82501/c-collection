@@ -33,10 +33,13 @@
   border-right: unset;
 }
 
-.footer__list button:hover {
-  color: grey;
-}
-
 .footer__list a svg {
   width: 1.8rem;
+}
+
+/* hover effect */
+@media (hover: hover) {
+  .footer__list button:hover {
+    color: grey;
+  }
 }

@@ -19,13 +19,17 @@
   margin-right: 0 !important;
   cursor: pointer;
 }
-.radio__label:hover,
-.selected {
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #000;
-}
 
 .radio {
   display: none;
+}
+
+/* hover effect */
+@media (hover: hover) {
+  .radio__label:hover,
+  .selected {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+  }
 }

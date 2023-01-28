@@ -36,9 +36,6 @@ input[id="address"] {
   border: none;
   cursor: pointer;
 }
-.btn__plus:hover {
-  background-color: #3d3d3d;
-}
 
 .icon__plus {
   width: 2rem;
@@ -76,8 +73,14 @@ input[id="address"] {
   cursor: pointer;
 }
 
-.btn__submit:hover {
-  background-color: #3d3d3d;
+/* hover effect */
+@media (hover: hover) {
+  .btn__plus:hover {
+    background-color: #3d3d3d;
+  }
+  .btn__submit:hover {
+    background-color: #3d3d3d;
+  }
 }
 
 /* width below 688px */

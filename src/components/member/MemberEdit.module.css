@@ -28,9 +28,6 @@ input[id="address"] {
   border: none;
   cursor: pointer;
 }
-.btn__plus:hover {
-  background-color: #3d3d3d;
-}
 
 .icon__plus {
   width: 2rem;
@@ -75,9 +72,6 @@ input[id="address"] {
   border: none;
 }
 
-.btn__submit:hover {
-  background-color: #3d3d3d;
-}
 .btn__edit_cancel {
   border: none;
   background-color: #cecece;
@@ -90,8 +84,17 @@ input[id="address"] {
   cursor: pointer;
 }
 
-.btn__edit_cancel:hover {
-  background-color: #c0c0c0;
+/* hover effect */
+@media (hover: hover) {
+  .btn__plus:hover {
+    background-color: #3d3d3d;
+  }
+  .btn__submit:hover {
+    background-color: #3d3d3d;
+  }
+  .btn__edit_cancel:hover {
+    background-color: #c0c0c0;
+  }
 }
 
 /* width below 672px */

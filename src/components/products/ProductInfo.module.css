@@ -72,12 +72,6 @@
   margin-right: 0 !important;
   cursor: pointer;
 }
-.spec_radio__label:hover,
-.spec_selected {
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #000;
-}
 
 .spec_radio {
   display: none;
@@ -115,6 +109,16 @@
   font-size: 1.6rem;
   transform: translateY(-65%);
   padding: 0 1rem;
+}
+
+/* hover effect */
+@media (hover: hover) {
+  .spec_radio__label:hover,
+  .spec_selected {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+  }
 }
 
 /* below width 1200px */

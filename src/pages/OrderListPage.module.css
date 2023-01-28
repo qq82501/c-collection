@@ -13,11 +13,6 @@
   font-weight: 500;
 }
 
-.order_list__order_no:hover,
-.order_list__order_no:active {
-  text-decoration: underline;
-}
-
 .order_list__head {
   display: grid;
   grid-template-columns: 30fr 50fr 15fr;
@@ -43,6 +38,14 @@
 }
 .order_list__table li:nth-child(1) {
   background-color: transparent;
+}
+
+/* hover effect */
+@media (hover: hover) {
+  .order_list__order_no:hover,
+  .order_list__order_no:active {
+    text-decoration: underline;
+  }
 }
 
 /* width below 704 */
