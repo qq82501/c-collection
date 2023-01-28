@@ -84,7 +84,9 @@ function ImageSlider() {
 
   const endTouchHandler = function (e) {
     //在mobile上在touch/click結束時將不會把focus留在element上，這樣便不會觸發onMouseEnter
-    e.preventDefault();
+    if (!e.target.closest("button")) {
+      e.preventDefault();
+    }
     startSliderHandler();
   };
 
