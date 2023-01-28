@@ -77,6 +77,12 @@
   display: none;
 }
 
+.spec_selected {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
 .btn__purchase {
   background-color: black;
   color: #fff;
@@ -113,8 +119,7 @@
 
 /* hover effect */
 @media (hover: hover) {
-  .spec_radio__label:hover,
-  .spec_selected {
+  .spec_radio__label:hover {
     background-color: #000;
     color: #fff;
     border: 1px solid #000;

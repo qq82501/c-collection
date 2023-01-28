@@ -21,7 +21,7 @@ function removeCartItemThunk(removeItem) {
         : [...state.localCart];
 
       const isExisted = cartItemsLatest.some(
-        (item) => item.productNo === removeItem.productNo
+        (item) => item.productDetailNo === removeItem.productDetailNo
       );
 
       if (!isExisted) {
@@ -29,7 +29,7 @@ function removeCartItemThunk(removeItem) {
       }
       if (isExisted) {
         cartItemsLatest = cartItemsLatest.filter(
-          (item) => item.productNo !== removeItem.productNo
+          (item) => item.productDetailNo !== removeItem.productDetailNo
         );
       }
 

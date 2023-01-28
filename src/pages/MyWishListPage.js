@@ -10,7 +10,14 @@ function MyWishListPage() {
   const [clickedProduct, setClickedProduct] = useState("");
 
   const openSpecListHandler = function (productNo) {
+    console.log(productNo);
     setClickedProduct(productNo);
+  };
+
+  const closeSpecListHandler = function (e) {
+    if (e.target.id === "wish_list__items_container") {
+      setClickedProduct("");
+    }
   };
 
   let favContents;
@@ -36,7 +43,9 @@ function MyWishListPage() {
     <div>
       <div className={styles.wish_list__title_bar}>您喜愛的商品</div>
       <div
+        id="wish_list__items_container"
         className={`breadcrumb__height  ${styles.wish_list__items_container}`}
+        onClick={closeSpecListHandler}
       >
         {favContents}
       </div>

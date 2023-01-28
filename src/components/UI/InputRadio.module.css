@@ -23,11 +23,15 @@
 .radio {
   display: none;
 }
+.selected {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
 
 /* hover effect */
 @media (hover: hover) {
-  .radio__label:hover,
-  .selected {
+  .radio__label:hover {
     background-color: #000;
     color: #fff;
     border: 1px solid #000;

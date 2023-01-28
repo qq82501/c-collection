@@ -28,7 +28,7 @@ function CartItem(props) {
     dispatch(updateCartThunk(props.product, addedDetail));
   };
 
-  const removeCartItem = function () {
+  const removeCartItem = function (e) {
     dispatch(removeCartItemThunk(props.product));
   };
 

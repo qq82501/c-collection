@@ -37,3 +37,10 @@
 :global(.open-spec) .spec_selector__label_box {
   opacity: 1;
 }
+
+@media (hover: hover) {
+  .spec_selector__label:hover {
+    background-color: #afafaf;
+    font-weight: 30;
+  }
+}
